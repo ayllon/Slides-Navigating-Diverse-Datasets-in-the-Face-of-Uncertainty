@@ -105,7 +105,7 @@ inconsistent or poorly documented schema.
 
 \begin{frame}{Objectives}
 \begin{alertblock}{Main Objective}
-
+    \smallskip
     To assist data scientists during the exploration of unprocessed, numerical, raw data distributed across multiple
     files based solely on its intrinsic distribution.
 \end{alertblock}
@@ -124,12 +124,90 @@ inconsistent or poorly documented schema.
 \section{Methodology}
 
 \begin{frame}{Framework}
+\begin{block}{\alert{Researching Information Systems and Computing}~\cite{Oates2006}}
+
+\begin{description}
+    \item[Purpose] The stated objective.
+    \item[Products] Analysis of the state-of-the-art, and a two new algorithms.
+    \item[Process] See next slide.
+    \item[Participants] Researcher, supervisor, reviewers.
+    \item[Paradigm] \emph{Pragmatism}~\cite{Shull2008}.
+    \item[Presentation] Papers, posters, published software, the current dissertation, etc.
+\end{description}
+
+\end{block}
 \end{frame}
 
-\begin{frame}{Literature Review}
+\begin{frame}{Process}
+
+\begin{alertblock}{Literature Review}
+    \emph{Systematic Literature Mapping}~\cite{Petersen2007}, a process for the exploration of
+    the situation of a wide research area with a high level of granularity.
+\end{alertblock}
+
+\begin{alertblock}{Strategy}
+    \emph{Engineering Design}~\cite{Dym2012}, the systematic, intelligent generation and evaluation
+    of specifications for artifacts whose form and function achieve stated objectives and satisfy specified
+    constraints.
+\end{alertblock}
+
+\begin{alertblock}{Data Generation Methods}
+Observations (experiments), to evaluate preliminary products.
+\end{alertblock}
+
+\begin{alertblock}{Data Analysis}
+    Quantitative
+\end{alertblock}
+
 \end{frame}
 
 \section{State of the Art}
+
+\begin{frame}{Systematic Literature Mapping}
+\begin{figure}
+    \begin{alertblock}{Questions}
+        \begin{itemize}
+            \item RQ1. How has the research area evolved?
+            \item RQ2. What is the maturity level of the research area?
+            \item RQ3. How far are we from an interactive tool that provides access to raw data files stores in distributed storage?
+        \end{itemize}
+    \end{alertblock}
+    \begin{block}{Search strategy}
+        \begin{itemize}
+            \item Digital Libraries (ACM, Elsevier, Springer, IEEE)
+            \item Forward Snowballing
+        \end{itemize}
+        Two searches: 2017 and 2022.
+    \end{block}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Classification}
+  \begin{columns}[t, totalwidth=1.02\textwidth]
+    \metroset{block=fill}
+    \begin{column}{0.45\linewidth}
+        \begin{block}{Category~\cite{Idreos2015}}
+            Three main layers:
+            \begin{itemize}
+                \item Database Layer
+                \item Middleware
+                \item User Interaction
+            \end{itemize}
+        \end{block}
+    \end{column}
+    \begin{column}{0.45\linewidth}
+        \begin{block}{Research type~\cite{Wieringa2006}}
+            \begin{itemize}
+                \item Validation Research
+                \item Proposal of Solution
+                \item Evaluation Research
+                \item Philosophical Paper
+                \item Opinion Paper
+            \end{itemize}
+        \end{block}
+    \end{column}
+    \end{columns}
+\end{frame}
 
 \begin{frame}{}
 \begin{figure}
@@ -137,6 +215,45 @@ inconsistent or poorly documented schema.
     \includegraphics[width=\textwidth]{layer_vs_type.pdf}
     \caption{Layer vs Study research type.}
 \end{figure}
+\end{frame}
+
+\begin{frame}{Conclusions}
+    \begin{block}{RQ1. How has the research area evolved?}
+        \smallskip
+        All three layers are well studies, but the middleware layer is becoming a more popular target.
+    \end{block}
+    \begin{block}{RQ2. What is the maturity level of the research area?}
+        \smallskip
+        The vast majority of studies are \emph{Proposal of Solutions}. There is very little follow-up of implementations in practice.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Conclusions}
+    \begin{block}{RQ3. How far are we from a tool that solves our three requirements?}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.6\textwidth]{venn.pdf}
+        \end{figure}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Insights}
+    \begin{block}{}
+        Most solutions treat files as separate, independent, relations~\cite{Silva2016}. They offer
+        little to no assistance in finding relations that \textit{overlap}.
+    \end{block}
+    \begin{block}{}
+        One exception is \textsc{Kayak}~\cite{maccioni_crossing_2017}.
+        \begin{itemize}
+            \item Integrates \textsc{Metanome}~\cite{papenbrock2015data}.
+            \item Based on \emph{Inclusion Dependencies} (IND), which assume discrete data types.
+        \end{itemize}
+    \end{block}
+    \begin{block}{}
+        ``Identifying Relationships between Scientific Datasets''~\cite{alawini2016} is close, but does not
+        consider multidimensional attributes (i.e. photometry in astronomy).
+    \end{block}
+    \alert{\textbf{Can we generalize IND to uncertain, multidimensional sets of attributes?}}
 \end{frame}
 
 \section{\PresQ}
