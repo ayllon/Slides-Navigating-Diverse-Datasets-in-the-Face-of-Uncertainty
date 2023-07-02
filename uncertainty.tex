@@ -666,6 +666,7 @@ Observations (experiments), to evaluate preliminary products.
 
         \item The full dataset is used (no training / testing split)
         \item It works with unbalanced sample sizes from $X$ and $Z$.
+        \item It can be generalized to non-vectorial data~\cite{kohonen1982self}.
     \end{itemize}
 \end{frame}
 
@@ -763,24 +764,109 @@ Observations (experiments), to evaluate preliminary products.
 \end{frame}
 
 
-
-\section{Discussion}
-
-\begin{frame}{\PresQ}
+\begin{frame}{Caveat}
+    Rosenblatt~\cite{rosenblatt2019better} argue that provable test statistics
+    should be preferred over heuristic alternatives.
+    \smallskip
+    Our proposal is oriented toward \alert{exploring} abundant structured data.
+    Developing a tailored statistic for all possible combinations is not viable,
+    and a pragmatic approach is more suitable~\cite{kim2021classification}.
 \end{frame}
 
-\begin{frame}{Two-Sample Test Based on SOM}
+\section{Threats to Validity}
+
+\begin{frame}{Internal Validity}
+    \begin{alertblock}{Significance of the Results}
+        \smallskip
+        The presented results could be a statistical fluctuation. To reduce the risk:
+        
+        \begin{itemize}
+            \item We have taken multiple measures with randomized initial conditions.
+            \item We have reported either 95\% confidence intervals or quartiles to make the measure errors explicit.
+        \end{itemize}
+    \end{alertblock}
 \end{frame}
 
-\begin{frame}{Threats to Validity}
+\begin{frame}{Internal Validity}
+    \begin{alertblock}{Implementation Bias}
+        \smallskip
+        The evaluated \PresQ and \textsc{Find} implementations share most parts of the code. The differences can only originate
+        from the algorithms and not the implementations.
+        
+        \smallskip
+        
+        For the statistical tests, SOM, $k$NN, C2ST-NN and C2ST-kNN have all been implemented using well known
+        Python libraries (\textsc{somoclu}, \textsc{numpy}, \textsc{scikit-learn}).
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{External Validity}
+    \begin{alertblock}{Generalization of the results}
+        \smallskip
+        We have performed tests with multitude of datasets from different domains.
+        
+        \smallskip
+
+        For the SOM statistical test, in the interests of transparency we have incorporated a set
+        of ``fair'' tests explicitly designed to show the short-comings of multidimensional statistical tests~\cite{ramdas2015decreasing}.
+        
+    \end{alertblock}
 \end{frame}
 
 \section{Conclusions}
 
 \begin{frame}{Contributions}
+    \begin{alertblock}{Survey of the State of the Art}
+        \smallskip
+        Contribute to the first sub-objective: finding existing techniques that help users to explore the data \emph{in-situ}.
+    \end{alertblock}
+
+    \begin{block}{New category for IDE: \alert{Schema Homogenization}}
+        \smallskip
+        Contributes to the first and second sub-objectives: identify gaps in the coverage.
+    \end{block}
+
+    \begin{alertblock}{Equally-Distributed Dependency}
+        \smallskip
+        Contributes to the second sub-objective: : identify gaps in the coverage.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Contributions: Algorithms}
+    \begin{alertblock}{\PresQ}
+        \smallskip
+        Can be used to find sets of Equally-Distributed attributes between dataset.
+        The Quasi-clique component can potentially be of use to other areas such as
+        chemistry or biology~\cite{Bretto2013}.
+    \end{alertblock}
+
+    \begin{alertblock}{Two-Sample Test Based on SOM}
+        \smallskip
+        A statistical test with a performance comparable to other tests based on machine learning models,
+        with an interpretable output.
+    \end{alertblock}
+
+    \begin{block}{}
+    These two algorithms contribute to the third sub-objective: design new algorithms tailored to numerical and
+    uncertain data.
+    \end{block}
 \end{frame}
 
 \begin{frame}{Future Work}
+    \begin{itemize}
+        \item Improve the quasi-clique finding algorithm.
+                
+        \item Data-aware quasi-clique finding algorithms.
+        
+        \item \alert{Partial equality-of-distribution}
+                
+        \item A Bayesian EDD finding algorithm (i.e. prior support, partial EDD~\cite{soriano2015bayesian}).
+        
+        \item Dimensionality reduction prior to EDD finding.
+            
+        \item \alert{Multidimensional \emph{complementarity}} (i.e. a dataset may be split 
+        based on the values from a given set of attributes).
+    \end{itemize}
 \end{frame}
 
 
