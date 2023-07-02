@@ -2,6 +2,8 @@
 \usetheme[progressbar=frametitle]{metropolis}
 \usepackage{appendixnumberbeamer}
 \usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{multicol}
 \usepackage{xspace}
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 
@@ -584,42 +586,183 @@ Observations (experiments), to evaluate preliminary products.
 \subsection{Background}
 
 \begin{frame}{Classifier 2-Sample Tests}
+    \begin{block}{}
+        A binary classifier can be seen as a two-sample test.
+        If a classifier has a better-than-chance performance (50\%), the two classes do not originate from the same
+        population~\cite{friedman2004multivariate}.
+        \smallskip
+        Given two samples $P$ and $Q$:
+        \begin{enumerate}
+            \item Label samples originating from $P$ with $1$, and those originating from $Q$ with $-1$.
+            \item Pool both samples into a single set $U$
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Classifier 2-Sample Tests}
+    \metroset{block=fill}
+    \begin{block}{Approach 1~\cite{friedman2004multivariate}}
+        A classifier is trained on $U$ in order to predict the label. The classifier score function $F(u)$ is used
+        to reduce the n-dimensional statistical test to a a 1-dimensional statistical test.
+    \end{block}
+    \begin{block}{Approach 2~\cite{lopez2016revisiting}}
+        $U$ is split into training and test sets. A classifier is trained on the former, and evaluated on the latter.
+        The accuracy is the test statistic.
+    \end{block}
 \end{frame}
 
 \begin{frame}{Self-Organizing Maps}
+    An \emph{unsupervised} machine-learning algorithm that learns
+    a projection from a high-dimension input space into a low-dimension output space.
+
+    \smallskip
+    
+    The output space is modeled as a grid of \emph{neurons} that \emph{responds} to a set of
+    values from the input space~\cite{kohonen1982self}.
+
+    \smallskip
+    
+    \alert{The output model preserves the topology of the input space}: any continuous changes
+    in the input data cause a continuous change on the neural map~\cite{Villmann1999}.
+
+    \smallskip
+
+    A classifier can be trained on the output space rather than the input space and used for the test.
+    
+    \metroset{block=fill}
+    \begin{alertblock}{Insight}
+        \smallskip
+        If two samples are equally distributed on the input space, they must be equally distributed on the output space.
+    \end{alertblock}    
 \end{frame}
 
 \subsection{Algorithm}
 
 \begin{frame}{SOM 2-Sample Test}
+    \begin{block}{Algorithm}
+        \begin{enumerate}
+        \item Train a SOM $M$ of size $(w, h)$ over $U = X \cup Z$.
+        \item Project $X$ and $Z$ separately over the SOM  $M$.
+        \item For each neuron $n_i$, count how many points from $X$ ($R_i)$ and how many from $Z$ ($S_i)$ are mapped to it.
+        \item Perform a a $\chi^2$ two sample test
+        \end{enumerate}
+
+        Under the null hypothesis, the test statistic follows a $\chi^2$ distribution with $k - c$ degrees of freedom,
+        \begin{itemize}
+            \item $k$ is the number of cells (neurons) where ${R_i + S_i > 0}$
+            \item $c = 1$ if the sample sizes are equal, or $c = 0$ otherwise~\cite{press1993numerical}.
+        \end{itemize}        
+    \end{block}
+\end{frame}
+
+\begin{frame}{Advantages}
+    \begin{itemize}
+        \item After the test, we have a trained model that can be used for
+            
+            \begin{itemize}
+                \item Visualization
+                \item Clustering~\cite{ultsch2005esom}
+            \end{itemize}
+
+        \item The full dataset is used (no training / testing split)
+        \item It works with unbalanced sample sizes from $X$ and $Z$.
+    \end{itemize}
 \end{frame}
 
 \subsection{Experiments}
 
-\begin{frame}{Experimental Setup}
-    
+\begin{frame}{Experiment: Multidimensional Normal Distribution}
+    \begin{block}{Evaluated Alternatives}
+        \smallskip
+        \begin{itemize}
+            \item Nearest neighbor type coincidences~\cite{Henze1988, Schilling1986b}.
+            \item Classifier two-sample tests~\cite{lopez2016revisiting}.
+        \end{itemize}
+    \end{block}
+    \begin{block}{``Fair'' Distributions}
+        \smallskip
+        \cite{ramdas2015decreasing} argue that a ``fair'' evaluation of the
+        statistical power as the dimensionality increases is to keep the
+        amount of information fixed.
+        For the location test, this can be achieved by two multivariate Gaussians that only differ
+        on the first dimension.
+    \end{block}
 \end{frame}
 
 \begin{frame}{}
 \begin{figure}
     \centering
-    \includegraphics[height=\textheight]{eye.pdf}
+    \includegraphics[height=\textheight]{normal_location}
 \end{figure}
 \end{frame}
 
 \begin{frame}{}
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{eye_features.eps}
+    \includegraphics[height=\textheight]{normal_location_fair}
 \end{figure}
 \end{frame}
 
-\begin{frame}{}
-\begin{figure}
-    \centering
-    \includegraphics[height=\textheight]{normal_location_fair.pdf}
-\end{figure}
+\begin{frame}{Experiment: Eye Movement Dataset}
+    \begin{block}{Dataset}
+        \smallskip
+        11 subjects were shown a question and a list of ten 
+        sentences: one correct answer (C), four relevant for the question (R) and give irrelevant (I).
+        
+        Their eye movement was measured for each possible answer, and summarized into 22 features,
+        together with their corresponding label~\cite{salojarvi2005inferring}.
+    \end{block}
+    \begin{block}{Evaluated Alternatives}
+        \smallskip
+        \begin{itemize}
+            \item Nearest neighbor type coincidences~\cite{Henze1988, Schilling1986b}.
+            \item Classifier two-sample tests~\cite{lopez2016revisiting}.
+            \item Kernel-Based methods MMD-B~\cite{zaremba2013b} and Song's~\cite{song2021fast}.
+        \end{itemize}
+    \end{block}
 \end{frame}
+
+\begin{frame}{}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{c r r r r r r}
+        \hline
+        \multicolumn{7}{c}{\thead{I vs. C}} \\
+        \hline
+        \thead{m = n} & \thead{Song} & \thead{MMD-B} & \thead{KNN} & \thead{C2ST-KNN} & \thead{C2ST-NN} & \thead{SOM} \\
+        \hline
+        100 & 0.826 & 0.374 & \textbf{0.973} & 0.164 & 0.079 & 0.042 \\
+        200 & 0.998 & 0.850 & \textbf{1.000} & 0.565 & 0.349 & 0.947 \\
+        300 & \textbf{1.000} & 0.985 & \textbf{1.000} & 0.863 & 0.644 & \textbf{1.000} \\
+        400 & \textbf{1.000} & \textbf{1.000} & \textbf{1.000} & 0.968 & 0.882 & \textbf{1.000} \\
+        \\
+        \hline
+        \multicolumn{7}{c}{\thead{R vs. C}} \\
+        \hline
+        \thead{m = n} & \thead{Song} & \thead{MMD-B} & \thead{KNN} & \thead{C2ST-KNN} & \thead{C2ST-NN} & \thead{SOM} \\
+        \hline
+        100 & 0.670 & 0.236 & \textbf{0.845} & 0.062 & 0.023 & 0.007 \\
+        200 & 0.969 & 0.685 & \textbf{0.996} & 0.298 & 0.139 & 0.672 \\
+        300 & 0.999 & 0.941 & \textbf{1.000} & 0.558 & 0.314 & 0.987 \\
+        400 & \textbf{1.000} & 0.988 & \textbf{1.000} & 0.811 & 0.560 & \textbf{1.000} \\
+    \end{tabular}
+    \caption{Empirical statistical power for the eye movement datasets.}
+    \label{tab:eye}
+\end{table}
+\end{frame}
+
+\begin{frame}{Interpretability}
+    \begin{figure}
+        \centering
+        \includegraphics[trim=5pt 60pt 5pt 5pt,clip,width=0.9\textwidth]{eye_features.eps}
+        \caption{
+            The features ``Regression length'' and ``duration'' stand out.
+            They are related to re-reading a word, which is expected to happen when reading a correct answer~\cite{salojarvi2005inferring}.
+        }
+    \end{figure}
+\end{frame}
+
+
 
 \section{Discussion}
 
