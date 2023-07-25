@@ -5,6 +5,7 @@
 \usepackage{makecell}
 \usepackage{multicol}
 \usepackage{xspace}
+\usepackage{emoji}
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 
 \addbibresource{references.bib}
@@ -84,7 +85,7 @@ Programa Oficial de Doctorado en Ingeniería Informática de la Universidad de C
 \begin{enumerate}
     \item Data exploration represents the fourth paradigm of scientific exploration, alongside experimental, theoretical, and computer-simulation paradigms.
     \item Data exploration is a vital component of the data-intensive scientific process.
-    \item Researchers must curate, understand, and extract information from data-sets.
+    \item Researchers must curate, understand, and extract information from data sets.
     \item To extract knowledge, first they need to identify patterns: \alert{data mining}.
 \end{enumerate}
 \end{frame}
@@ -116,7 +117,7 @@ inconsistent or poorly documented schema.
 
 \begin{block}{Sub-objectives}
     \begin{enumerate}
-        \item Find existing techniques that help users to explore the data in-situ.
+        \item Find existing techniques that help users to explore the data in situ.
         \item Identify gaps in the coverage of the existing techniques.
         \item Design new algorithms tailored to numerical and uncertain data.
     \end{enumerate}
@@ -173,7 +174,7 @@ Observations (experiments), to evaluate preliminary products.
         \begin{itemize}
             \item RQ1. How has the research area evolved?
             \item RQ2. What is the maturity level of the research area?
-            \item RQ3. How far are we from an interactive tool that provides access to raw data files stores in distributed storage?
+            \item RQ3. How far are we from an interactive tool that provides access to raw data files stored in distributed storage?
         \end{itemize}
     \end{alertblock}
     \begin{block}{Search strategy}
@@ -224,7 +225,7 @@ Observations (experiments), to evaluate preliminary products.
 \begin{frame}{Conclusions}
     \begin{block}{RQ1. How has the research area evolved?}
         \smallskip
-        All three layers are well studies, but the middleware layer is becoming a more popular target.
+        All three layers are well studied, but the middleware layer is becoming a more popular target.
     \end{block}
     \begin{block}{RQ2. What is the maturity level of the research area?}
         \smallskip
@@ -347,7 +348,7 @@ Observations (experiments), to evaluate preliminary products.
     \begin{exampleblock}{Example}
     \smallskip
     If we have two sets of $10$ attributes that are equally distributed, the number of
-    3-dimensional projections (specializations) that must be equally distributed will be $\binom{10}{3} = 120$ .
+    3-dimensional projections (specializations) that must be equally distributed will be $\binom{10}{3} = 120$.
     If we have a significance level of $\alpha = 0.1$, the expected number of
     falsely rejected 3-dimensional equalities is then $12$.
     \end{exampleblock}
@@ -382,7 +383,7 @@ Observations (experiments), to evaluate preliminary products.
     \begin{itemize}
         \item It is \textbf{NP-complete}.
         \item The \textbf{number of solutions} can be \textbf{exponential} in the input size.
-        \item It is \textbf{non approximable} (NP-complete even if we accept an error margin).
+        \item It is \textbf{non-approximable} (NP-complete even if we accept an error margin).
     \end{itemize}
     
     \bigskip
@@ -471,7 +472,7 @@ Observations (experiments), to evaluate preliminary products.
     $\forall e \in E' : e \subseteq V'$
     \end{alertblock}
     
-    We can approximate $\gamma \approx 1 - \alpha$. How do we bound $\lambda$ ?
+    We can approximate $\gamma \approx 1 - \alpha$. How do we bound $\lambda$?
 \end{frame}
 
 \begin{frame}{Quasi-Clique Finding}
@@ -568,14 +569,14 @@ Observations (experiments), to evaluate preliminary products.
 \end{figure}
 \end{frame}
 
-\begin{frame}{Insights only from the data}
+\begin{frame}{Insights Only From the Data}
 \begin{figure}
     \centering
     \includegraphics{afds}
     \caption{
         Pairwise max arity found on the \emph{Aircraft Fuel Distribution System} dataset for each pair of scenarios.
         Without even knowing the structure or content of the files, we can see that
-        scenarios two and three are the most similar, which we can confirm on the
+        scenarios two and three are the most similar, which we can confirm in the
         original paper~\cite{Gheraibia2019}.
     }
 \end{figure}
@@ -603,7 +604,7 @@ Observations (experiments), to evaluate preliminary products.
     \metroset{block=fill}
     \begin{block}{Approach 1~\cite{friedman2004multivariate}}
         A classifier is trained on $U$ in order to predict the label. The classifier score function $F(u)$ is used
-        to reduce the n-dimensional statistical test to a a 1-dimensional statistical test.
+        to reduce the n-dimensional statistical test to a 1-dimensional statistical test.
     \end{block}
     \begin{block}{Approach 2~\cite{lopez2016revisiting}}
         $U$ is split into training and test sets. A classifier is trained on the former, and evaluated on the latter.
@@ -664,7 +665,7 @@ Observations (experiments), to evaluate preliminary products.
                 \item Clustering~\cite{ultsch2005esom}
             \end{itemize}
 
-        \item The full dataset is used (no training / testing split)
+        \item The full dataset is used (no training/testing split)
         \item It works with unbalanced sample sizes from $X$ and $Z$.
         \item It can be generalized to non-vectorial data~\cite{kohonen1982self}.
     \end{itemize}
@@ -803,54 +804,90 @@ Observations (experiments), to evaluate preliminary products.
 \begin{frame}{External Validity}
     \begin{alertblock}{Generalization of the results}
         \smallskip
-        We have performed tests with multitude of datasets from different domains.
+        We have performed tests with a multitude of datasets from different domains.
         
         \smallskip
 
-        For the SOM statistical test, in the interests of transparency we have incorporated a set
-        of ``fair'' tests explicitly designed to show the short-comings of multidimensional statistical tests~\cite{ramdas2015decreasing}.
+        For the SOM statistical test, in the interests of transparency, we have incorporated a set
+        of ``fair'' tests explicitly designed to show the shortcomings of multidimensional statistical tests~\cite{ramdas2015decreasing}.
         
     \end{alertblock}
 \end{frame}
 
 \section{Conclusions}
 
+%\begin{frame}{Contributions}
+%    \begin{alertblock}{Survey of the State of the Art}
+%        \smallskip
+%        Contribute to the first sub-objective: finding existing techniques that help users to explore the data \emph{in-situ}.
+%    \end{alertblock}
+
+%    \begin{block}{New category for IDE: \alert{Schema Homogenization}}
+%        \smallskip
+%        Contributes to the first and second sub-objectives: identify gaps in the coverage.
+%    \end{block}
+
+%    \begin{alertblock}{Equally-Distributed Dependency}
+%        \smallskip
+%        Contributes to the second sub-objective: identify gaps in the coverage.
+%    \end{alertblock}
+%\end{frame}
+
+%\begin{frame}{Contributions: Algorithms}
+%    \begin{alertblock}{\PresQ}
+%        \smallskip
+%        It can be used to find sets of Equally-Distributed attributes between datasets.
+%        The Quasi-clique component can potentially be of use to other areas such as
+%        chemistry or biology~\cite{Bretto2013}.
+%    \end{alertblock}
+
+%    \begin{alertblock}{Two-Sample Test Based on SOM}
+%        \smallskip
+%        A statistical test with a performance comparable to other tests based on machine learning models,
+%        with an interpretable output.
+%    \end{alertblock}
+
+%    \begin{block}{}
+%    These two algorithms contribute to the third sub-objective: design new algorithms tailored to numerical and
+%    uncertain data.
+%    \end{block}
+%\end{frame}
+
 \begin{frame}{Contributions}
-    \begin{alertblock}{Survey of the State of the Art}
-        \smallskip
-        Contribute to the first sub-objective: finding existing techniques that help users to explore the data \emph{in-situ}.
-    \end{alertblock}
 
-    \begin{block}{New category for IDE: \alert{Schema Homogenization}}
-        \smallskip
-        Contributes to the first and second sub-objectives: identify gaps in the coverage.
-    \end{block}
+\begin{alertblock}{\emoji{check-mark} Find existing techniques that help users to explore the data in situ}
+    \begin{itemize}
+        \item Survey of the State of the Art
+    \end{itemize}
+\end{alertblock}
 
-    \begin{alertblock}{Equally-Distributed Dependency}
-        \smallskip
-        Contributes to the second sub-objective: : identify gaps in the coverage.
-    \end{alertblock}
+\begin{alertblock}{\emoji{check-mark} Identify gaps in the coverage of the existing techniques}
+    \begin{itemize}
+        \item New category for IDE: \alert{Schema Homogenization}
+        \item Equally-Distributed Dependency
+    \end{itemize}
+\end{alertblock}
+
+\begin{alertblock}{\emoji{check-mark} Design new algorithms tailored to numerical and uncertain data}
+    \begin{itemize}
+        \item \PresQ
+        \item Two-Sample Test Based on SOM
+    \end{itemize}
+\end{alertblock}
+
 \end{frame}
 
-\begin{frame}{Contributions: Algorithms}
-    \begin{alertblock}{\PresQ}
-        \smallskip
-        Can be used to find sets of Equally-Distributed attributes between dataset.
-        The Quasi-clique component can potentially be of use to other areas such as
-        chemistry or biology~\cite{Bretto2013}.
-    \end{alertblock}
+\begin{frame}{Contributions}
 
-    \begin{alertblock}{Two-Sample Test Based on SOM}
-        \smallskip
-        A statistical test with a performance comparable to other tests based on machine learning models,
-        with an interpretable output.
-    \end{alertblock}
+\metroset{block=fill}
+\begin{block}{\emoji{white-check-mark} Main Objective}
+    The proposed algorithms can assist data scientists to identify relationships
+    between numerical, raw datasets distributed across multiple files
+    based solely on their intrinsic distribution.
+\end{block}
 
-    \begin{block}{}
-    These two algorithms contribute to the third sub-objective: design new algorithms tailored to numerical and
-    uncertain data.
-    \end{block}
 \end{frame}
+
 
 \begin{frame}{Future Work}
     \begin{itemize}
