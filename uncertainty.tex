@@ -86,7 +86,7 @@ Programa Oficial de Doctorado en Ingeniería Informática de la Universidad de C
     \item Data exploration represents the fourth paradigm of scientific exploration, alongside experimental, theoretical, and computer-simulation paradigms.
     \item Data exploration is a vital component of the data-intensive scientific process.
     \item Researchers must curate, understand, and extract information from data sets.
-    \item To extract knowledge, first they need to identify patterns: \alert{data mining}.
+    \item To extract knowledge, first, they need to identify patterns: \alert{data mining}.
 \end{enumerate}
 \end{frame}
 
@@ -103,7 +103,7 @@ Programa Oficial de Doctorado en Ingeniería Informática de la Universidad de C
 The \alert{familiarization with the data}. The user interactively explores the
 data, gaining insight, and generating new hypotheses.
 
-During this stage, the data may be stored in unprocessed files, with an
+During this stage, the data may be stored in unprocessed files with an
 inconsistent or poorly documented schema.
 
 \end{frame}
@@ -111,7 +111,7 @@ inconsistent or poorly documented schema.
 \begin{frame}{Objectives}
 \begin{alertblock}{Main Objective}
     \smallskip
-    To assist data scientists during the exploration of unprocessed, numerical, raw data distributed across multiple
+    To assist data scientists while exploring unprocessed, numerical, raw data distributed across multiple
     files based solely on its intrinsic distribution.
 \end{alertblock}
 
@@ -133,7 +133,7 @@ inconsistent or poorly documented schema.
 
 \begin{description}
     \item[Purpose] The stated objective.
-    \item[Products] Analysis of the state-of-the-art, and a two new algorithms.
+    \item[Products] Analysis of the state-of-the-art, and two new algorithms.
     \item[Process] See next slide.
     \item[Participants] Researcher, supervisor, reviewers.
     \item[Paradigm] \emph{Pragmatism}~\cite{Shull2008}.
@@ -143,26 +143,42 @@ inconsistent or poorly documented schema.
 \end{block}
 \end{frame}
 
-\begin{frame}{Process}
+\begin{frame}{Process Model}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{modelo_proceso.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Process Model}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{modelo_proceso_circle.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Process Model}
 
 \begin{alertblock}{Literature Review}
-    \emph{Systematic Literature Mapping}~\cite{Petersen2007}, a process for the exploration of
+    \smallskip
+    \emph{Systematic Literature Mapping}~\cite{Petersen2007}, a process for exploring
     the situation of a wide research area with a high level of granularity.
 \end{alertblock}
 
 \begin{alertblock}{Strategy}
+    \smallskip
     \emph{Engineering Design}~\cite{Dym2012}, the systematic, intelligent generation and evaluation
     of specifications for artifacts whose form and function achieve stated objectives and satisfy specified
     constraints.
 \end{alertblock}
 
-\begin{alertblock}{Data Generation Methods}
-Observations (experiments), to evaluate preliminary products.
-\end{alertblock}
+%\begin{alertblock}{Data Generation Methods}
+%Observations (experiments) to evaluate preliminary products.
+%\end{alertblock}
 
-\begin{alertblock}{Data Analysis}
-    Quantitative
-\end{alertblock}
+%\begin{alertblock}{Data Analysis}
+%    Quantitative
+%\end{alertblock}
 
 \end{frame}
 
@@ -174,33 +190,48 @@ Observations (experiments), to evaluate preliminary products.
         \begin{itemize}
             \item RQ1. How has the research area evolved?
             \item RQ2. What is the maturity level of the research area?
-            \item RQ3. How far are we from an interactive tool that provides access to raw data files stored in distributed storage?
+            \item RQ3. How far are we from an interactive tool that provides interactive access
+                to raw data files stored in distributed storage?
         \end{itemize}
     \end{alertblock}
     \begin{block}{Search strategy}
         \begin{itemize}
-            \item Digital Libraries (ACM, Elsevier, Springer, IEEE)
+            \item Set of known works from \cite{Idreos2015}
             \item Forward Snowballing
+            \item Digital Libraries
+            \item Two searches: 2017 and 2022
         \end{itemize}
-        Two searches: 2017 and 2022.
+    \end{block}
+    \begin{block}{Exclusion Criteria}
+        \smallskip
+        Unsupported language, incomplete publication, off-topic, not primary, duplication.
     \end{block}
 \end{figure}
 \end{frame}
 
 \begin{frame}{Classification}
-  \begin{columns}[t, totalwidth=1.02\textwidth]
+  %\begin{columns}[t, totalwidth=1.02\textwidth]
     \metroset{block=fill}
-    \begin{column}{0.45\linewidth}
+   % \begin{column}{0.45\linewidth}
         \begin{block}{Category~\cite{Idreos2015}}
-            Three main layers:
+            %Three main layers:
             \begin{itemize}
                 \item Database Layer
+                    \begin{itemize}
+                        \item Indexes, Data Storage
+                    \end{itemize}
                 \item Middleware
+                    \begin{itemize}
+                        \item Interactive Performance Optimizations
+                    \end{itemize}
                 \item User Interaction
+                    \begin{itemize}
+                        \item Data Visualization, Exploration Interfaces
+                    \end{itemize}
             \end{itemize}
         \end{block}
-    \end{column}
-    \begin{column}{0.45\linewidth}
+    %\end{column}
+    %\begin{column}{0.45\linewidth}
         \begin{block}{Research type~\cite{Wieringa2006}}
             \begin{itemize}
                 \item Validation Research
@@ -210,15 +241,15 @@ Observations (experiments), to evaluate preliminary products.
                 \item Opinion Paper
             \end{itemize}
         \end{block}
-    \end{column}
-    \end{columns}
+    %\end{column}
+    %\end{columns}
 \end{frame}
 
 \begin{frame}{}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{layer_vs_type.pdf}
-    \caption{Layer vs Study research type.}
+    \caption{Layer vs. Study research type.}
 \end{figure}
 \end{frame}
 
@@ -242,21 +273,29 @@ Observations (experiments), to evaluate preliminary products.
     \end{block}
 \end{frame}
 
+\begin{frame}{Threats to Validity}
+\begin{itemize}
+    \item Lack of well-defined keywords
+    \item Search bias (i.e., set of online libraries)
+    \item Classification bias
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Insights}
     \begin{block}{}
-        Most solutions treat files as separate, independent, relations~\cite{Silva2016}. They offer
+        Most solutions treat files as separate, independent relations~\cite{Silva2016}. They offer
         little to no assistance in finding relations that \textit{overlap}.
     \end{block}
     \begin{block}{}
         One exception is \textsc{Kayak}~\cite{maccioni_crossing_2017}.
         \begin{itemize}
             \item Integrates \textsc{Metanome}~\cite{papenbrock2015data}.
-            \item Based on \emph{Inclusion Dependencies} (IND), which assume discrete data types.
+            \item Based on \emph{Inclusion Dependencies} (IND), assuming discrete data types.
         \end{itemize}
     \end{block}
     \begin{block}{}
-        ``Identifying Relationships between Scientific Datasets''~\cite{alawini2016} is close, but does not
-        consider multidimensional attributes (i.e. photometry in astronomy).
+        \emph{Identifying Relationships between Scientific Datasets}~\cite{alawini2016} does not
+        consider multidimensional attributes
     \end{block}
     \alert{\textbf{Can we generalize IND to uncertain, multidimensional sets of attributes?}}
 \end{frame}
@@ -265,7 +304,7 @@ Observations (experiments), to evaluate preliminary products.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{no2ind.pdf}
-    \caption{Example of a 2D distribution where the pairwise matching is not enough.}
+    \caption{Example of a 2D distribution where the pairwise matching is insufficient}
 \end{figure}
 \end{frame}
 
