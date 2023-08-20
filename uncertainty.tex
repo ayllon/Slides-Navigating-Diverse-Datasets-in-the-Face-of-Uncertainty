@@ -284,13 +284,13 @@ inconsistent or poorly documented schema.
 \begin{frame}{Insights}
     \begin{block}{}
         Most solutions treat files as separate, independent relations~\cite{Silva2016}. They offer
-        little to no assistance in finding relations that \textit{overlap}.
+        little to no assistance in finding relations that \textit{overlap}: \alert{Schema Homogenization}.
     \end{block}
     \begin{block}{}
         One exception is \textsc{Kayak}~\cite{maccioni_crossing_2017}.
         \begin{itemize}
             \item Integrates \textsc{Metanome}~\cite{papenbrock2015data}.
-            \item Based on \emph{Inclusion Dependencies} (IND), assuming discrete data types.
+            \item Based on \emph{Inclusion Dependencies} (IND): discrete data types.
         \end{itemize}
     \end{block}
     \begin{block}{}
@@ -321,13 +321,12 @@ inconsistent or poorly documented schema.
         and Y , we write $R.X \subseteq S.Y$ , or $X \subseteq Y$ , when each distinct
         combination of values in X appears in Y~\cite{abedjan2015}
     \end{block}
-    \begin{block}{Equally-Distributed Dependency (EDD)}
+    \begin{block}{\alert{Equally-Distributed Dependency (EDD)}}
         \smallskip
-        An equally-distributed dependency between a set of columns X from
+        An equally-distributed dependency between a set of columns X
         of relation R and a set of columns Y of relation S, written $R.X \eqdist S.Y$ or
         $X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
     \end{block}
-    \alert{Almost the same} but not quite.
 \end{frame}
 
 \begin{frame}{Inference Rules}
@@ -373,6 +372,14 @@ inconsistent or poorly documented schema.
     \end{block}
 \end{frame}
 
+\begin{frame}{Search Space}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{lattice.pdf}
+    \caption{Search space for INDs}
+\end{figure}
+\end{frame}
+
 \begin{frame}{Traversal}
     Given $I_1 \prec I_2$:
     
@@ -397,7 +404,7 @@ inconsistent or poorly documented schema.
 \begin{frame}{Bottom-Up Search}
     \begin{block}{Naive Traversal of the Search Space}
         \smallskip
-        We can validate pairwise EDDs. Then, we build possible three-wise EDD and validate them in turn.
+        We can validate pairwise EDDs. Then, we build possible three-wise EDD and validate them.
         Then, we build possible four-wise EDD...
     \end{block}
         
@@ -407,7 +414,7 @@ inconsistent or poorly documented schema.
     to test...
     
     \begin{equation*}
-        \sum_{k=0}^{n}{\binom{n}{k}} = \sum_{k=0}^{n} \frac{n!}{n!(n - k)!}
+        \sum_{k=1}^{n}{\binom{n}{k}} = \sum_{k=1}^{n} \frac{n!}{n!(n - k)!}
     \end{equation*}
     
     possible combinations of attributes.
@@ -420,15 +427,15 @@ inconsistent or poorly documented schema.
     problems~\cite{Blsius2017}.
     
     \begin{itemize}
-        \item It is \textbf{NP-complete}.
+        \item It is \textbf{NP-hard}.
         \item The \textbf{number of solutions} can be \textbf{exponential} in the input size.
-        \item It is \textbf{non-approximable} (NP-complete even if we accept an error margin).
+        \item It is \textbf{non-approximable} (NP-hard even if we accept an error margin).
     \end{itemize}
     
     \bigskip
     
     However, the run-time can be reasonable if we are optimistic: i.e. if we assume
-    $n$ 1-EDDs are derived from a single $n$-EDD, we only need one test!: Top-down traversal.
+    $n$ 1-EDDs are derived from a single $n$-EDD, we only need one test: Top-down traversal.
     
     \bigskip
     
@@ -437,13 +444,13 @@ inconsistent or poorly documented schema.
 
 \subsection{Clique Finding}
 \begin{frame}{Clique Finding}
-    The problem can be mapped to finding cliques on hypergraphs: \textsc{Find}~\cite{koeller2003discovery}:
+    The problem can be mapped to finding cliques on hypergraphs: \textsc{Find2}~\cite{koeller2003discovery}:
     
     \begin{enumerate}
         \item Pairwise matches (1EDD) are mapped to \textbf{nodes}.
         \item $k$-combinations of 1EDD are mapped to \textbf{$k$-edges}.
         \item Cliques of size $n$ \emph{may} correspond to $n$-EDD.
-        \item If they are not, we \emph{break} these cliques into a set of $k+1$ edges and
+        \item If they do not, we \emph{break} these cliques into a set of $k+1$ edges and
             validate them.
     \end{enumerate}
 
@@ -488,9 +495,6 @@ inconsistent or poorly documented schema.
 
 \subsection{Quasi-Clique Finding}
 \begin{frame}{Quasi-Clique Finding}
-    A quasi-clique is a clique with missing edges, which can be limited as a ratio of the total (1)
-    or as a ratio of the degree of a node (2).
-
     \metroset{block=fill}
     \begin{alertblock}{Definition}
     Given a k-uniform hypergraph $(V,E)$, and two parameters $\lambda, \gamma \in [0,1]$,
@@ -519,11 +523,15 @@ inconsistent or poorly documented schema.
     There is no reason to think that any particular subset of the edges
     has a higher probability of having missing members. If a given node has an
     unexpectedly low degree, it is most likely connected by spurious edges.
-    
-    The degree of the nodes should follow a hypergeometric distribution:
+    \end{block}
+    \metroset{block=fill}
+    \begin{block}{The degree should follow a hypergeometric distribution}
+    \begin{equation}
+        \forall v \in V': \operatorname{CDF}(\operatorname{Degree}(v)) \ge \Lambda
+    \end{equation}
     \end{block}
     \centering
-    \includegraphics[width=0.7\linewidth]{quasicliques}
+    \includegraphics[width=0.6\linewidth]{quasicliques}
 \end{frame}
 
 \begin{frame}{\PresQ}
