@@ -650,12 +650,11 @@ inconsistent or poorly documented schema.
 \begin{frame}{Classifier 2-Sample Tests}
     \metroset{block=fill}
     \begin{block}{Approach 1~\cite{friedman2004multivariate}}
-        A classifier is trained on $U$ in order to predict the label. The classifier score function $F(u)$ is used
+        A classifier is trained on $U$ to predict the label. The classifier score function $F(u)$ is used
         to reduce the n-dimensional statistical test to a 1-dimensional statistical test.
     \end{block}
     \begin{block}{Approach 2~\cite{lopez2016revisiting}}
-        $U$ is split into training and test sets. A classifier is trained on the former, and evaluated on the latter.
-        The accuracy is the test statistic.
+        $U$ is split into training and test sets. The accuracy of the classifier on the test set is the test statistic.
     \end{block}
 \end{frame}
 
@@ -672,10 +671,6 @@ inconsistent or poorly documented schema.
     
     \alert{The output model preserves the topology of the input space}: any continuous changes
     in the input data cause a continuous change on the neural map~\cite{Villmann1999}.
-
-    \smallskip
-
-    A classifier can be trained on the output space rather than the input space and used for the test.
     
     \metroset{block=fill}
     \begin{alertblock}{Insight}
@@ -692,7 +687,7 @@ inconsistent or poorly documented schema.
         \item Train a SOM $M$ of size $(w, h)$ over $U = X \cup Z$.
         \item Project $X$ and $Z$ separately over the SOM  $M$.
         \item For each neuron $n_i$, count how many points from $X$ ($R_i)$ and how many from $Z$ ($S_i)$ are mapped to it.
-        \item Perform a a $\chi^2$ two sample test
+        \item Perform a $\chi^2$ two-sample test.
         \end{enumerate}
 
         Under the null hypothesis, the test statistic follows a $\chi^2$ distribution with $k - c$ degrees of freedom,
@@ -712,7 +707,7 @@ inconsistent or poorly documented schema.
                 \item Clustering~\cite{ultsch2005esom}
             \end{itemize}
 
-        \item The full dataset is used (no training/testing split)
+        \item The full dataset is used.
         \item It works with unbalanced sample sizes from $X$ and $Z$.
         \item It can be generalized to non-vectorial data~\cite{kohonen1982self}.
     \end{itemize}
@@ -731,10 +726,8 @@ inconsistent or poorly documented schema.
     \begin{block}{``Fair'' Distributions}
         \smallskip
         \cite{ramdas2015decreasing} argue that a ``fair'' evaluation of the
-        statistical power as the dimensionality increases is to keep the
+        statistical power as the dimensionality increases must keep the
         amount of information fixed.
-        For the location test, this can be achieved by two multivariate Gaussians that only differ
-        on the first dimension.
     \end{block}
 \end{frame}
 
@@ -756,10 +749,9 @@ inconsistent or poorly documented schema.
     \begin{block}{Dataset}
         \smallskip
         11 subjects were shown a question and a list of ten 
-        sentences: one correct answer (C), four relevant for the question (R) and give irrelevant (I).
+        sentences: one correct answer (C), four relevant for the question (R), and five irrelevant (I).
         
-        Their eye movement was measured for each possible answer, and summarized into 22 features,
-        together with their corresponding label~\cite{salojarvi2005inferring}.
+        Their eye movement was measured for each answer and summarized into 22 features~\cite{salojarvi2005inferring}.
     \end{block}
     \begin{block}{Evaluated Alternatives}
         \smallskip
@@ -803,9 +795,9 @@ inconsistent or poorly documented schema.
 \begin{frame}{Interpretability}
     \begin{figure}
         \centering
-        \includegraphics[trim=5pt 60pt 5pt 5pt,clip,width=0.9\textwidth]{eye_features.eps}
+        \includegraphics[trim=5pt 75pt 5pt 5pt,clip,width=0.9\textwidth]{eye_features.eps}
         \caption{
-            The features ``Regression length'' and ``duration'' stand out.
+            The features ``Regression length'' and ``regression duration'' stand out.
             They are related to re-reading a word, which is expected to happen when reading a correct answer~\cite{salojarvi2005inferring}.
         }
     \end{figure}
@@ -944,12 +936,14 @@ inconsistent or poorly documented schema.
         
         \item \alert{Partial equality-of-distribution}
                 
-        \item A Bayesian EDD finding algorithm (i.e. prior support, partial EDD~\cite{soriano2015bayesian}).
+        \item A Bayesian EDD finding algorithm (i.e., prior support, partial EDD~\cite{soriano2015bayesian}).
         
-        \item Dimensionality reduction prior to EDD finding.
+        \item Dimensionality reduction before EDD finding.
             
-        \item \alert{Multidimensional \emph{complementarity}} (i.e. a dataset may be split 
+        \item \alert{Multidimensional \emph{complementarity}} (i.e., a dataset may be split 
         based on the values from a given set of attributes).
+
+        \item Applications on privacy-preserving data mining.
     \end{itemize}
 \end{frame}
 
