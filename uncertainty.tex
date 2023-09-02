@@ -1,4 +1,4 @@
-\documentclass[10pt]{beamer}
+\documentclass[10pt,notes]{beamer}
 \usetheme[progressbar=frametitle]{metropolis}
 \usepackage{appendixnumberbeamer}
 \usepackage{booktabs}
@@ -90,14 +90,6 @@ Programa Oficial de Doctorado en Ingeniería Informática de la Universidad de C
 \end{enumerate}
 \end{frame}
 
-\begin{frame}{}
-\begin{figure}
-    \centering
-    \includegraphics[height=0.8\textheight]{crisp-dm.pdf}
-    \caption{CRoss Industry Standard Process for Data Mining}
-\end{figure}
-\end{frame}
-
 \begin{frame}{Our Focus: Data Understanding}
 
 The \alert{familiarization with the data}. The user interactively explores the
@@ -107,6 +99,13 @@ During this stage, the data may be stored in unprocessed files with an
 inconsistent or poorly documented schema.
 
 \end{frame}
+
+\note{
+\begin{itemize}
+    \item A part of Data Mining is Data Understanding.
+    \item As Hector García Morales noted, \emph{most of the attention when developing Machine Learning and AI systems is put in  modeling and training (data preparation). Still, a successful model relies almost entirely on a well-structured database and a properly identified set of features.}
+\end{itemize}
+}
 
 \begin{frame}{Objectives}
 \begin{alertblock}{Main Objective}
@@ -124,7 +123,9 @@ inconsistent or poorly documented schema.
 \end{block}
 \end{frame}
 
-
+\note{
+Focusing on \alert{multidimensional} distributions.
+}
 
 \section{Methodology}
 
@@ -143,12 +144,14 @@ inconsistent or poorly documented schema.
 \end{block}
 \end{frame}
 
-\begin{frame}{Process Model}
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{modelo_proceso.pdf}
-\end{figure}
-\end{frame}
+\note{
+\begin{itemize}
+    \item \alert{Paradigm} Shared world view, not provable.
+    \item \alert{Pragmatism}, knowledge is approximate and must be evaluated by its utility. 
+    \item Other examples would be positivism (reality is objective, research neutral, i.e., physics) and critic research (social structure is the focus).
+    \item \alert{Important to evaluate the added knowledge from the thesis}
+\end{itemize}
+}
 
 \begin{frame}{Process Model}
 \begin{figure}
@@ -157,7 +160,7 @@ inconsistent or poorly documented schema.
 \end{figure}
 \end{frame}
 
-\begin{frame}{Process Model}
+\note{
 
 \begin{alertblock}{Literature Review}
     \smallskip
@@ -172,15 +175,7 @@ inconsistent or poorly documented schema.
     constraints.
 \end{alertblock}
 
-%\begin{alertblock}{Data Generation Methods}
-%Observations (experiments) to evaluate preliminary products.
-%\end{alertblock}
-
-%\begin{alertblock}{Data Analysis}
-%    Quantitative
-%\end{alertblock}
-
-\end{frame}
+}
 
 \section{State of the Art}
 
@@ -188,15 +183,15 @@ inconsistent or poorly documented schema.
 \begin{figure}
     \begin{alertblock}{Questions}
         \begin{itemize}
-            \item RQ1. How has the research area evolved?
+            \item RQ1. How has Interactive Data Exploration research evolved since 2015?
             \item RQ2. What is the maturity level of the research area?
-            \item RQ3. How far are we from an interactive tool that provides interactive access
-                to raw data files stored in distributed storage?
+            \item RQ3. How far are we from a tool that provides \alert{interactive} access
+                to \alert{raw} data files stored in \alert{distributed} storage?
         \end{itemize}
     \end{alertblock}
     \begin{block}{Search strategy}
         \begin{itemize}
-            \item Set of known works from \cite{Idreos2015}
+            \item Backward Snowballing from \cite{Idreos2015}
             \item Forward Snowballing
             \item Digital Libraries
             \item Two searches: 2017 and 2022
@@ -204,10 +199,17 @@ inconsistent or poorly documented schema.
     \end{block}
     \begin{block}{Exclusion Criteria}
         \smallskip
-        Unsupported language, incomplete publication, off-topic, not primary, duplication.
+        Language, incomplete, off-topic, not primary, duplication.
     \end{block}
 \end{figure}
 \end{frame}
+
+\note{
+\begin{itemize}
+    \item Access at a higher granularity that File (how data is sharded is an "implementation detail")
+    \item 5.688 papers in 2017 (242 accepted), 2.468 in 2022 (89 accepted)
+\end{itemize}
+}
 
 \begin{frame}{Classification}
   %\begin{columns}[t, totalwidth=1.02\textwidth]
@@ -216,17 +218,17 @@ inconsistent or poorly documented schema.
         \begin{block}{Category~\cite{Idreos2015}}
             %Three main layers:
             \begin{itemize}
-                \item Database Layer
+                \item User Interaction
                     \begin{itemize}
-                        \item Indexes, Data Storage
+                        \item Data Visualization, Exploration Interfaces
                     \end{itemize}
                 \item Middleware
                     \begin{itemize}
                         \item Interactive Performance Optimizations
                     \end{itemize}
-                \item User Interaction
+                \item Database Layer
                     \begin{itemize}
-                        \item Data Visualization, Exploration Interfaces
+                        \item Indexes, Data Storage
                     \end{itemize}
             \end{itemize}
         \end{block}
@@ -234,11 +236,11 @@ inconsistent or poorly documented schema.
     %\begin{column}{0.45\linewidth}
         \begin{block}{Research type~\cite{Wieringa2006}}
             \begin{itemize}
-                \item Validation Research
-                \item Proposal of Solution
-                \item Evaluation Research
-                \item Philosophical Paper
                 \item Opinion Paper
+                \item Philosophical Paper
+                \item Evaluation Research
+                \item Proposal of Solution
+                \item Validation Research
             \end{itemize}
         \end{block}
     %\end{column}
@@ -268,10 +270,16 @@ inconsistent or poorly documented schema.
     \begin{block}{RQ3. How far are we from a tool that solves our three requirements?}
         \begin{figure}
             \centering
-            \includegraphics[width=0.6\textwidth]{venn.pdf}
+            \includegraphics[width=0.5\textwidth]{venn.pdf}
         \end{figure}
+        \emph{{A} {D}istributed {I}n-situ {A}nalysis {M}ethod for {L}arge-scale
+{S}cientific {D}ata}~\cite{Han2017}
     \end{block}
 \end{frame}
+
+\begin{note}
+    "A distributed in-situ analysis method for large-scale scientific data" not explicitly interactive, but within limits
+\end{note}
 
 \begin{frame}{Threats to Validity}
 \begin{itemize}
@@ -300,14 +308,6 @@ inconsistent or poorly documented schema.
     \alert{\textbf{Can we generalize IND to uncertain, multidimensional sets of attributes?}}
 \end{frame}
 
-\begin{frame}{}
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{no2ind.pdf}
-    \caption{Example of a 2D distribution where the pairwise matching is insufficient}
-\end{figure}
-\end{frame}
-
 \section{\PresQ}
 
 \subsection{Background}
@@ -328,6 +328,10 @@ inconsistent or poorly documented schema.
         $X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
     \end{block}
 \end{frame}
+
+\note{
+How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
+}
 
 \begin{frame}{Inference Rules}
     \metroset{block=fill}
@@ -457,6 +461,11 @@ inconsistent or poorly documented schema.
     The search space is traversed alternating between bottom-up \emph{and} top-down.
 \end{frame}
 
+\note{
+A hypergraph is a generalization of a graph. In a graph, an edge connects two nodes. In
+a k-uniform hypergraph, an edge connects k nodes.
+}
+
 \begin{frame}{Clique Finding}
     \begin{exampleblock}{Example}
         \begin{columns}
@@ -533,6 +542,11 @@ inconsistent or poorly documented schema.
     \centering
     \includegraphics[width=0.6\linewidth]{quasicliques}
 \end{frame}
+
+\note{
+ Hypergeometric: sampling without replacement. Define drawing an edge connecting a node V as a success and any other a failure.
+ If the quasi-clique misses |E| edges, and the node has degree(V) missing edges, what's the probability that is just chance?
+}
 
 \begin{frame}{\PresQ}
 
@@ -616,6 +630,10 @@ inconsistent or poorly documented schema.
 \end{figure}
 \end{frame}
 
+\note{
+Tables 5.6 and 5.7 contain more detailed results for this experiment.
+}
+
 \begin{frame}{Insights Only From the Data}
 \begin{figure}
     \centering
@@ -658,6 +676,21 @@ inconsistent or poorly documented schema.
     \end{block}
 \end{frame}
 
+\note{
+\begin{enumerate}
+    \item Approach 1
+    \begin{itemize}
+        \item $F(u)$ is evaluated on all samples. and we can have two CDF (integrating over $F$), one for P and one for Q. Use unidimensional test.
+    \end{itemize}
+
+    \item Approach 2
+    \begin{itemize}
+        \item Can not use the full set to do the test (problem for small samples)
+        \item Underpowered since it uses a discrete test statistic
+    \end{itemize}
+\end{enumerate}
+}
+
 \begin{frame}{Self-Organizing Maps}
     An \emph{unsupervised} machine-learning algorithm that learns
     a projection from a high-dimension input space into a low-dimension output space.
@@ -678,6 +711,10 @@ inconsistent or poorly documented schema.
         If two samples are equally distributed on the input space, they must be equally distributed on the output space.
     \end{alertblock}    
 \end{frame}
+
+\note{
+Thanks to emergent properties, a classifier can be trained on the output space
+}
 
 \subsection{Algorithm}
 
@@ -713,6 +750,10 @@ inconsistent or poorly documented schema.
     \end{itemize}
 \end{frame}
 
+\note{
+Non-vectorial as long as there is a distance metric and training is done in batches
+}
+
 \subsection{Experiments}
 
 \begin{frame}{Experiment: Multidimensional Normal Distribution}
@@ -731,12 +772,27 @@ inconsistent or poorly documented schema.
     \end{block}
 \end{frame}
 
+\note{
+For the location test, fairness can be achieved by two multivariate Gaussians that only differ on the first dimension.
+}
+
 \begin{frame}{}
 \begin{figure}
     \centering
     \includegraphics[height=\textheight]{normal_location}
 \end{figure}
 \end{frame}
+
+\note{
+    \begin{itemize}
+        \item Red-line significance level ($\alpha$) which is fixed
+        \item The plot shows empirical significance level (95%)
+        \item For the varying number of samples, dimensionality is fixed at 1000 (max)
+        \item For the varying number of dimensions, the number of samples is fixed at 300
+        \item Repeated 500 times for each data point
+        \item Except for c2st-nn at samples 100, the bars overlap for Type II error.
+    \end{itemize}
+}
 
 \begin{frame}{}
 \begin{figure}
@@ -802,6 +858,10 @@ inconsistent or poorly documented schema.
         }
     \end{figure}
 \end{frame}
+
+\note{
+Codebooks for a subset of the parameters: how each neuron is sensitive to a given feature. Darker is more.
+}
 
 
 \begin{frame}{Caveat}
@@ -947,6 +1007,17 @@ inconsistent or poorly documented schema.
     \end{itemize}
 \end{frame}
 
+\note{
+\begin{itemize}
+    \item Data-aware: Somehow, considering correlation matrix, for instance?
+    \item Bayesian: can check local null hypothesis testing, so we can accept a candidate with only partial support
+    \item Privacy preserving: linking attacks
+    \begin{itemize}
+        \item  Experiment with Open University Learning Analytics Dataset shows an "attribute disclosure": the attackers improve their knowledge of a set of attributes for a given individual. i.e. young female from North Western, most likely deprived (low income, low employment, etc.).
+    \end{itemize}
+\end{itemize}
+}
+
 \definecolor{myblue}{RGB}{35,55,59}
 {\setbeamercolor{palette primary}{fg=white, bg=myblue}
 \begin{frame}[standout]
@@ -954,12 +1025,11 @@ inconsistent or poorly documented schema.
 \end{frame}
 }
 
+\appendix
 
 \begin{frame}[allowframebreaks]{Bibliography}
 \printbibliography[]
 \end{frame}
-
-\appendix
 
 {\setbeamercolor{palette primary}{fg=white, bg=black}
 \begin{frame}[standout]
@@ -967,6 +1037,13 @@ inconsistent or poorly documented schema.
 \end{frame}
 }
 
+\begin{frame}{}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{no2ind.pdf}
+    \caption{Example of a 2D distribution where the pairwise matching is insufficient}
+\end{figure}
+\end{frame}
 
 \begin{frame}{}
 \begin{figure}
