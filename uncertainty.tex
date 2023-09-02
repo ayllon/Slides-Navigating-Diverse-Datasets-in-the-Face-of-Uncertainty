@@ -8,6 +8,10 @@
 \usepackage{emoji}
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 
+\usepackage{pgfpages}
+
+\setbeameroption{show notes on second screen}
+
 \addbibresource{references.bib}
 \ExecuteBibliographyOptions{isbn=false,url=false,doi=true,eprint=false}
 \DeclareSourcemap{
@@ -45,7 +49,6 @@
     \newunit\newblock
     \usebibmacro{finentry}}}
 \makeatother
-
 
 \newcommand{\PresQ}[0]{\textsc{PresQ}\xspace}
 \newcommand{\eqdist}{\stackrel{d}{=}}
@@ -98,14 +101,13 @@ data, gaining insight, and generating new hypotheses.
 During this stage, the data may be stored in unprocessed files with an
 inconsistent or poorly documented schema.
 
-\end{frame}
-
 \note{
 \begin{itemize}
     \item A part of Data Mining is Data Understanding.
     \item As Hector García Morales noted, \emph{most of the attention when developing Machine Learning and AI systems is put in  modeling and training (data preparation). Still, a successful model relies almost entirely on a well-structured database and a properly identified set of features.}
 \end{itemize}
 }
+\end{frame}
 
 \begin{frame}{Objectives}
 \begin{alertblock}{Main Objective}
@@ -121,11 +123,11 @@ inconsistent or poorly documented schema.
         \item Design new algorithms tailored to numerical and uncertain data.
     \end{enumerate}
 \end{block}
-\end{frame}
 
 \note{
 Focusing on \alert{multidimensional} distributions.
 }
+\end{frame}
 
 \section{Methodology}
 
@@ -142,7 +144,6 @@ Focusing on \alert{multidimensional} distributions.
 \end{description}
 
 \end{block}
-\end{frame}
 
 \note{
 \begin{itemize}
@@ -152,13 +153,13 @@ Focusing on \alert{multidimensional} distributions.
     \item \alert{Important to evaluate the added knowledge from the thesis}
 \end{itemize}
 }
+\end{frame}
 
 \begin{frame}{Process Model}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{modelo_proceso_circle.pdf}
 \end{figure}
-\end{frame}
 
 \note{
 
@@ -176,6 +177,7 @@ Focusing on \alert{multidimensional} distributions.
 \end{alertblock}
 
 }
+\end{frame}
 
 \section{State of the Art}
 
@@ -202,7 +204,6 @@ Focusing on \alert{multidimensional} distributions.
         Language, incomplete, off-topic, not primary, duplication.
     \end{block}
 \end{figure}
-\end{frame}
 
 \note{
 \begin{itemize}
@@ -210,6 +211,7 @@ Focusing on \alert{multidimensional} distributions.
     \item 5.688 papers in 2017 (242 accepted), 2.468 in 2022 (89 accepted)
 \end{itemize}
 }
+\end{frame}
 
 \begin{frame}{Classification}
   %\begin{columns}[t, totalwidth=1.02\textwidth]
@@ -275,11 +277,11 @@ Focusing on \alert{multidimensional} distributions.
         \emph{{A} {D}istributed {I}n-situ {A}nalysis {M}ethod for {L}arge-scale
 {S}cientific {D}ata}~\cite{Han2017}
     \end{block}
-\end{frame}
 
 \begin{note}
     "A distributed in-situ analysis method for large-scale scientific data" not explicitly interactive, but within limits
 \end{note}
+\end{frame}
 
 \begin{frame}{Threats to Validity}
 \begin{itemize}
@@ -327,11 +329,11 @@ Focusing on \alert{multidimensional} distributions.
         of relation R and a set of columns Y of relation S, written $R.X \eqdist S.Y$ or
         $X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
     \end{block}
-\end{frame}
 
 \note{
 How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
 }
+\end{frame}
 
 \begin{frame}{Inference Rules}
     \metroset{block=fill}
@@ -459,12 +461,12 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \end{enumerate}
 
     The search space is traversed alternating between bottom-up \emph{and} top-down.
-\end{frame}
 
 \note{
 A hypergraph is a generalization of a graph. In a graph, an edge connects two nodes. In
 a k-uniform hypergraph, an edge connects k nodes.
 }
+\end{frame}
 
 \begin{frame}{Clique Finding}
     \begin{exampleblock}{Example}
@@ -541,12 +543,12 @@ a k-uniform hypergraph, an edge connects k nodes.
     \end{block}
     \centering
     \includegraphics[width=0.6\linewidth]{quasicliques}
-\end{frame}
 
 \note{
  Hypergeometric: sampling without replacement. Define drawing an edge connecting a node V as a success and any other a failure.
  If the quasi-clique misses |E| edges, and the node has degree(V) missing edges, what's the probability that is just chance?
 }
+\end{frame}
 
 \begin{frame}{\PresQ}
 
@@ -628,11 +630,11 @@ a k-uniform hypergraph, an edge connects k nodes.
     \caption{$95\%$ confidence intervals for the percent difference
     between \textsc{Find} and \PresQ.}
 \end{figure}
-\end{frame}
 
 \note{
 Tables 5.6 and 5.7 contain more detailed results for this experiment.
 }
+\end{frame}
 
 \begin{frame}{Insights Only From the Data}
 \begin{figure}
@@ -674,7 +676,6 @@ Tables 5.6 and 5.7 contain more detailed results for this experiment.
     \begin{block}{Approach 2~\cite{lopez2016revisiting}}
         $U$ is split into training and test sets. The accuracy of the classifier on the test set is the test statistic.
     \end{block}
-\end{frame}
 
 \note{
 \begin{enumerate}
@@ -690,6 +691,7 @@ Tables 5.6 and 5.7 contain more detailed results for this experiment.
     \end{itemize}
 \end{enumerate}
 }
+\end{frame}
 
 \begin{frame}{Self-Organizing Maps}
     An \emph{unsupervised} machine-learning algorithm that learns
@@ -710,11 +712,11 @@ Tables 5.6 and 5.7 contain more detailed results for this experiment.
         \smallskip
         If two samples are equally distributed on the input space, they must be equally distributed on the output space.
     \end{alertblock}    
-\end{frame}
 
 \note{
 Thanks to emergent properties, a classifier can be trained on the output space
 }
+\end{frame}
 
 \subsection{Algorithm}
 
@@ -748,11 +750,11 @@ Thanks to emergent properties, a classifier can be trained on the output space
         \item It works with unbalanced sample sizes from $X$ and $Z$.
         \item It can be generalized to non-vectorial data~\cite{kohonen1982self}.
     \end{itemize}
-\end{frame}
 
 \note{
 Non-vectorial as long as there is a distance metric and training is done in batches
 }
+\end{frame}
 
 \subsection{Experiments}
 
@@ -770,18 +772,17 @@ Non-vectorial as long as there is a distance metric and training is done in batc
         statistical power as the dimensionality increases must keep the
         amount of information fixed.
     \end{block}
-\end{frame}
 
 \note{
 For the location test, fairness can be achieved by two multivariate Gaussians that only differ on the first dimension.
 }
+\end{frame}
 
 \begin{frame}{}
 \begin{figure}
     \centering
     \includegraphics[height=\textheight]{normal_location}
 \end{figure}
-\end{frame}
 
 \note{
     \begin{itemize}
@@ -793,6 +794,7 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
         \item Except for c2st-nn at samples 100, the bars overlap for Type II error.
     \end{itemize}
 }
+\end{frame}
 
 \begin{frame}{}
 \begin{figure}
@@ -857,11 +859,11 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
             They are related to re-reading a word, which is expected to happen when reading a correct answer~\cite{salojarvi2005inferring}.
         }
     \end{figure}
-\end{frame}
 
 \note{
 Codebooks for a subset of the parameters: how each neuron is sensitive to a given feature. Darker is more.
 }
+\end{frame}
 
 
 \begin{frame}{Caveat}
@@ -1005,7 +1007,6 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
 
         \item Applications on privacy-preserving data mining.
     \end{itemize}
-\end{frame}
 
 \note{
 \begin{itemize}
@@ -1017,6 +1018,7 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
     \end{itemize}
 \end{itemize}
 }
+\end{frame}
 
 \definecolor{myblue}{RGB}{35,55,59}
 {\setbeamercolor{palette primary}{fg=white, bg=myblue}
