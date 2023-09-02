@@ -95,7 +95,7 @@ Programa Oficial de Doctorado en Ingeniería Informática de la Universidad de C
 
 \begin{frame}{Our Focus: Data Understanding}
 
-The \alert{familiarization with the data}. The user interactively explores the
+\alert{Familiarization with the data}: The user interactively explores the
 data, gaining insight, and generating new hypotheses.
 
 During this stage, the data may be stored in unprocessed files with an
@@ -287,7 +287,7 @@ Focusing on \alert{multidimensional} distributions.
 \begin{itemize}
     \item Lack of well-defined keywords
     \item Search bias (i.e., set of online libraries)
-    \item Classification bias
+    \item Classification bias (researcher's)
 \end{itemize}
 \end{frame}
 
@@ -394,9 +394,8 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
         \item $d \not\models I_1$ with a probability $\alpha$ when $d \models I_2$
             (Rejecting $H_{0_1}$ \emph{does not} imply the rejection of $H_{0_2}$)
     \end{enumerate}
-\end{frame}
 
-\begin{frame}{Traversal}
+\note{
     \begin{exampleblock}{Example}
     \smallskip
     If we have two sets of $10$ attributes that are equally distributed, the number of
@@ -404,8 +403,9 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     If we have a significance level of $\alpha = 0.1$, the expected number of
     falsely rejected 3-dimensional equalities is then $12$.
     \end{exampleblock}
-\end{frame}
+}
 
+\end{frame}
 
 \begin{frame}{Bottom-Up Search}
     \begin{block}{Naive Traversal of the Search Space}
@@ -439,13 +439,14 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \end{itemize}
     
     \bigskip
-    
-    However, the run-time can be reasonable if we are optimistic: i.e. if we assume
-    $n$ 1-EDDs are derived from a single $n$-EDD, we only need one test: Top-down traversal.
-    
+
+\note{
+    Another option is Top-Down search (optimistic): we assume $n$ 1-EDDs are derived from a single $n$-EDD.
     \bigskip
-    
     But we risk being too optimistic and needing to traverse the full search space from top to bottom.
+    \bigskip
+    We can alternate between bottom-up (pessimistic) and top-down (optimistic).
+}
 \end{frame}
 
 \subsection{Clique Finding}
@@ -527,6 +528,15 @@ a k-uniform hypergraph, an edge connects k nodes.
     \end{alertblock}
     
     We can approximate $\gamma \approx 1 - \alpha$. How do we bound $\lambda$?
+
+\note{
+\begin{enumerate}
+    \item Constrains the number of missing edges on the quasi-clique wrt the clique
+    \item Constrains the number of missing connecting edges for a given node
+\end{enumerate}
+
+We can use (1), or (2), or both, which is more resilient.
+}
 \end{frame}
 
 \begin{frame}{Quasi-Clique Finding}
@@ -605,14 +615,6 @@ a k-uniform hypergraph, an edge connects k nodes.
     \end{figure}
 \end{frame}
 
-\begin{frame}{Clique Recovery: Spurious Edges}
-    \begin{figure}
-        \centering
-        \includegraphics{3hyper_beta}
-        \caption{Robustness wrt. spurious edges (3-hypergraph)}
-    \end{figure}
-\end{frame}
-
 \begin{frame}{Clique Recovery: Correlated Missing / Spurious}
 \begin{figure}
     \centering
@@ -621,6 +623,10 @@ a k-uniform hypergraph, an edge connects k nodes.
     Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.
     }
 \end{figure}
+
+\note{
+Removed and added purely random. With actual data $\Lambda$ is more robust.
+}
 \end{frame}
 
 \begin{frame}{EDD Finding}
@@ -787,11 +793,14 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
 \note{
     \begin{itemize}
         \item Red-line significance level ($\alpha$) which is fixed
-        \item The plot shows empirical significance level (95%)
+        \item The plot shows empirical significance level (95\%)
+        \item Except for c2st-nn at samples 100, the bars overlap for Type II error.
+    \end{itemize}
+    DO NOT SAY, BACKUP:
+    \begin{itemize}
         \item For the varying number of samples, dimensionality is fixed at 1000 (max)
         \item For the varying number of dimensions, the number of samples is fixed at 300
         \item Repeated 500 times for each data point
-        \item Except for c2st-nn at samples 100, the bars overlap for Type II error.
     \end{itemize}
 }
 \end{frame}
@@ -1045,6 +1054,14 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
     \includegraphics[width=\textwidth]{no2ind.pdf}
     \caption{Example of a 2D distribution where the pairwise matching is insufficient}
 \end{figure}
+\end{frame}
+
+\begin{frame}{Clique Recovery: Spurious Edges}
+    \begin{figure}
+        \centering
+        \includegraphics{3hyper_beta}
+        \caption{Robustness wrt. spurious edges (3-hypergraph)}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{}
