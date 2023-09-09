@@ -12,7 +12,7 @@
 
 \usepackage{pgfpages}
 
-%\setbeameroption{show notes on second screen}
+\setbeameroption{show notes on second screen}
 
 \addbibresource{references.bib}
 \ExecuteBibliographyOptions{isbn=false,url=false,doi=true,eprint=false}
@@ -1093,7 +1093,42 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
 \end{frame}
 }
 
-\begin{frame}{}
+\begin{frame}{Proof of Projection}
+\small
+We need to prove that if two sets of random variables
+$X_1,\dots,X_n$ and $Y_1,\dots,Y_n$ are equally distributed, so are
+any of their possible sub-sequences.
+
+Let $X'$ and $Y'$ be the sequences $X_1,\dots,X_m$ and $Y_1,\dots,Y_m$ with $m < n$.
+Their corresponding  CDF are just the \emph{marginal} CDF:
+
+\begin{equation}
+\begin{split}
+    F_{X_1,\dots,X_m}(x_1,\dots,x_m) = & F_{X_1,\dots,X_m,X_{m+1},X_n}(x_1,\dots,x_m,x_{m+1},\dots,x_n) \\
+    F_{Y_1,\dots,Y_m}(y_1,\dots,y_m) =& F_{Y_1,\dots,Y_m,Y_{m+1},Y_n}(x_1,\dots,x_m,x_{m+1},\dots,x_n)\\
+    & \forall (x_1,\dots,x_m) \in \mathbb{R}^m \textrm{ and } x_i \xrightarrow{} \infty \; \forall i > m
+\end{split}
+\end{equation}
+
+Since $X_1,\ldots,X_n \eqdist X_1,\ldots,Y_n$, the right-hand side of both equations must be the same.
+By transitivity, 
+
+\begin{equation}
+\begin{split}
+    & F_{X_1,\dots,X_m}(x_1,\dots,x_m) = F_{Y_1,\dots,Y_m}(y_1,\dots,y_m) \; \forall (x_1,\dots,x_m) \in \mathbb{R}^m \\
+    & \implies X_1,\dots,X_m \eqdist Y_1,\dots,Y_m
+\end{split}
+\end{equation}
+
+\note{
+Since $F$ is the CDF, it is the integral of the probability function at that point.
+
+$F_X(x) = \lim_{y \to \infty} F(x,y)$
+}
+
+\end{frame}
+
+\begin{frame}{Pairwise matching is not sufficient}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{no2ind.pdf}
@@ -1109,21 +1144,21 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
     \end{figure}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{PresQ Scalability}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{scalability.pdf}
 \end{figure}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{PresQ Scalability}
 \begin{figure}
     \centering
     \includegraphics[height=\textheight]{scalability_sample_wave.pdf}
 \end{figure}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{Eye Regress}
 \begin{figure}
     \centering
     \includegraphics[height=\textheight]{eye_regress-eps-converted-to.pdf}
