@@ -489,8 +489,14 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
 
 %\subsection{Clique Finding}
 \begin{frame}{Clique Finding}
-    The problem can be mapped to finding cliques on hypergraphs: \textsc{Find2}~\footcite{koeller2003discovery}:
-    
+    \textsc{Find2}~\footcite{koeller2003discovery} maps the problem to finding cliques on hypergraphs.
+    \begin{description}
+        \item[Hypergraph] Generalization of a graph, an edge connects multiple nodes.
+        \item[Clique] Subset of nodes on a hypergraph fully connected.
+    \end{description}
+\end{frame}
+
+\begin{frame}{Clique Finding}
     \begin{enumerate}
         \item Pairwise matches (1EDD) are mapped to \textbf{nodes}.
         \item $k$-combinations of 1EDD are mapped to \textbf{$k$-edges}.
@@ -498,12 +504,8 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
         \item If they do not, we \emph{break} these cliques into a set of $k+1$ edges and
             validate them.
     \end{enumerate}
-
-    The search space is traversed alternating between bottom-up \emph{and} top-down.
-
 \note{
-A hypergraph is a generalization of a graph. In a graph, an edge connects two nodes. In
-a k-uniform hypergraph, an edge connects k nodes.
+The search space is traversed alternating between bottom-up \emph{and} top-down.
 }
 \end{frame}
 
