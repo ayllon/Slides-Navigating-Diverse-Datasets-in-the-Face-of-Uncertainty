@@ -139,6 +139,8 @@ inconsistent or poorly documented schema.
 \begin{itemize}
     \item A part of Data Mining is Data Understanding.
     \item As Hector García Morales noted, \emph{most of the attention when developing Machine Learning and AI systems is put in  modeling and training (data preparation). Still, a successful model relies almost entirely on a well-structured database and a properly identified set of features.}
+    \item For instance, in Astronomy there can be catalogs with data from the same part of the sky, done by someone
+        with some Python script stored somewhere.
 \end{itemize}
 }
 \end{frame}
@@ -667,14 +669,29 @@ Removed and added purely random. With actual data, $\Lambda$ is more robust.
 \end{frame}
 
 \begin{frame}{EDD Finding}
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{all}
-    \caption{$95\%$ confidence intervals for the percent difference
-    between \textsc{Find} and \PresQ.}
-\end{figure}
+
+\begin{table}
+\begin{tabular}{lrrr}
+                   & \thead{Quasicliques} & \thead{Valid} & \thead{Median size} \\
+$\Lambda = 0.00$   & 2385                 & 292       & 19        \\
+$\Lambda = 0.05$   & 107                  & 64        & 12        \\
+$\Lambda = 1.00$\footnotemark & \numprint{53 053} & \numprint{52 291} &  6         \\
+\end{tabular}
+\caption{Consequences of the different $\Lambda$ parameterization when running over the DC2 dataset.}
+\end{table}
+
+\begin{block}{}
+EDD finding based on quasi-cliques constrained by $\gamma$ and $\Lambda$ 
+strike a good balance between the completeness of the result and the run time.
+\end{block}
 
 \note{
+For $\Lambda = 0$, the search algorithm is too greedy and accepts quasi-cliques that are poor candidates.
+Too many are invalid (8 times more candidates than valid) and must be fed back to the algorithm, increasing run-time.
+For $\Lambda = 1$, the search algorithm is too restrictive. Its precision is high,
+but it spends a long time enumerating small cliques. $\Lambda = 0.05$ provides
+the right balance, improving the result and performance.
+
 Tables 5.6 and 5.7 contain more detailed results of this experiment.
 Get rid of the figure and verbally explain.
 }
