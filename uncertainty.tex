@@ -860,7 +860,7 @@ TODO: Improve contrast
     \begin{block}{Dataset}
         \smallskip
         11 subjects were shown a question and a list of ten 
-        sentences: one correct answer (C), four relevant for the question (R), and five irrelevant (I).
+        sentences: one correct answer (C), four relevant (R), and five irrelevant (I).
         
         Their eye movement was measured for each answer and summarized into 22 features~\footcite{salojarvi2005inferring}.
     \end{block}
@@ -908,26 +908,28 @@ TODO: Improve contrast
         \centering
         \includegraphics[trim=5pt 75pt 5pt 5pt,clip,width=0.9\textwidth]{eye_features.eps}
         \caption{
-            The features ``Regression length'' and ``regression duration'' stand out.
-            They are related to re-reading a word, which is expected to happen when reading a correct answer~\footcite{salojarvi2005inferring}.
+            The features ``Regression length'' and ``regression duration'' stand out,
+            which is expected to happen when reading a correct answer.
         }
     \end{figure}
-
 \note{
-Codebooks for a subset of the parameters: how each neuron is sensitive to a given feature. Darker is more.
+\begin{itemize}
+    \item Regression length and duration are related to re-reading a word.
+    \item \cite{salojarvi2005inferring}
+    \item Codebooks for a subset of the parameters: how each neuron is sensitive to a given feature. Darker is more.
+\end{itemize}
 }
 \end{frame}
 
 
 \begin{frame}{Caveat}
-    \cite{rosenblatt2019better} argues that provable test statistics
-    should be preferred over heuristic alternatives.
-        
-    Our proposal is oriented toward exploring abundant structured data.
-    Developing a tailored statistic for all possible combinations is not viable,
-    and a pragmatic approach is more suitable~\footcite{kim2021classification}.
-
-    \note{TODO: Itemize}
+    \begin{itemize}
+        \item \cite{rosenblatt2019better} argue that provable test statistics
+            should be preferred over heuristic alternatives.
+        \item This proposal is oriented toward exploring abundant structured data.
+        \item Developing a tailored statistic for all possible combinations is not viable,
+            and a pragmatic approach is more suitable~\footcite{kim2021classification}.
+    \end{itemize}
 \end{frame}
 
 \section{Threats to Validity}
@@ -960,12 +962,12 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
 \begin{frame}{External Validity}
     \begin{alertblock}{Generalization of the results}
         \smallskip
-        We have performed tests with a multitude of datasets from different domains.
+        The tests were performed with a multitude of datasets from different domains.
         
         \smallskip
 
-        For the SOM statistical test, in the interests of transparency, we have incorporated a set
-        of ``fair'' tests explicitly designed to show the shortcomings of multidimensional statistical tests.
+        In the interests of transparency, the SOM statistical test has been tested on a set
+        of ``fair'' distributions explicitly designed to show the shortcomings of multidimensional statistical tests.
         
     \end{alertblock}
 \end{frame}
