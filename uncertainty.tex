@@ -139,7 +139,7 @@ inconsistent or poorly documented schema.
 \begin{itemize}
     \item A part of Data Mining is Data Understanding.
     \item As Hector García Morales noted, \emph{most of the attention when developing Machine Learning and AI systems is put in  modeling and training (data preparation). Still, a successful model relies almost entirely on a well-structured database and a properly identified set of features.}
-    \item For instance, in Astronomy there can be catalogs with data from the same part of the sky, done by someone
+    \item For instance, in Astronomy, there can be catalogs with data from the same part of the sky, done by someone
         with some Python script stored somewhere.
 \end{itemize}
 }
@@ -238,7 +238,6 @@ Focusing on \alert{multidimensional} distributions.
 \begin{itemize}
     \item Since 2015 because Idreos 2015 is the bootstrap.
     \item Access at a higher granularity than file (how data is sharded is an "implementation detail")
-    \item 5.688 papers in 2017 (242 accepted), 2.468 in 2022 (89 accepted)
 \end{itemize}
 }
 \end{frame}
@@ -304,7 +303,7 @@ Focusing on \alert{multidimensional} distributions.
     \end{block}
 
 \note{
-    "A distributed in-situ analysis method for large-scale scientific data" not explicitly interactive, but within limits
+    Not explicitly interactive, but within limits
 }
 \end{frame}
 
@@ -318,29 +317,29 @@ Focusing on \alert{multidimensional} distributions.
 
 \begin{frame}{Insights}
     \begin{block}{}
-        Most solutions treat files as separate, independent relations~\footcite{Silva2016}. They offer
-        little to no assistance in finding relations that \textit{overlap}: \alert{Schema Homogenization}.
+        Most solutions treat files as independent relations. They offer
+        little assistance in finding \textit{overlapping} relations: \alert{Schema Homogenization}.
     \end{block}
-    \begin{block}{}
-        One exception is \textsc{Kayak}~\footcite{maccioni_crossing_2017}.
-        \begin{itemize}
-            \item Integrates \textsc{Metanome}~\footcite{papenbrock2015data}.
-            \item Based on \emph{Inclusion Dependencies} (IND): discrete data types.
-            \item TODO: Image usually journals ask for? Some illustration
-            \item TODO: Move the figure of the lattice here, use it as an excuse to introduce IND, rules, and *then* talk PresQ.
-        \end{itemize}
+    \begin{block}{One exception: \textsc{Kayak}~\footcite{maccioni_crossing_2017}, integrates \textsc{Metanome}~\footcite{papenbrock2015data}}
+    \smallskip
+    \centering
+        \includegraphics[width=0.5\textwidth]{metanome.png}
     \end{block}
-    \begin{block}{}
-        \cite{alawini2016} does not consider multidimensional attributes
-    \end{block}
+
+\note{
+    Based on \emph{Inclusion Dependencies} (IND): discrete data types.
+}
+\end{frame}
+    
+\begin{frame}{Insights}
+    \cite{alawini2016} considers numerical attributes, but only 1D.
+    
     \alert{\textbf{Can we generalize IND to uncertain, multidimensional sets of attributes?}}
 \end{frame}
 
+% \item TODO: Move the figure of the lattice here, use it as an excuse to introduce IND, rules, and *then* talk PresQ.
+
 \section{\PresQ}
-\note{
-    Be explicit this is the main contribution (state-of-the-art is done).
-    Add to each slide the section (breadcrumb).
-}
 
 %\subsection{Background}
 
@@ -651,7 +650,6 @@ We can use (1), or (2), or both, which is more resilient.
         \includegraphics{3hyper_alpha}
         \caption{Robustness wrt. missing edges (3-hypergraph)}
     \end{figure}
-    \note{Remove timeouts, separate and make clearer}
 \end{frame}
 
 \begin{frame}{Clique Recovery: Correlated Missing / Spurious}
@@ -664,7 +662,7 @@ We can use (1), or (2), or both, which is more resilient.
 \end{figure}
 
 \note{
-Removed and added purely random. With actual data, $\Lambda$ is more robust.
+Removed and added purely random. With actual data, $\Lambda$ is more robust (next slide).
 }
 \end{frame}
 
@@ -693,7 +691,6 @@ but it spends a long time enumerating small cliques. $\Lambda = 0.05$ provides
 the right balance, improving the result and performance.
 
 Tables 5.6 and 5.7 contain more detailed results of this experiment.
-Get rid of the figure and verbally explain.
 }
 \end{frame}
 
@@ -707,7 +704,6 @@ Get rid of the figure and verbally explain.
         \cite{Gheraibia2019}.
     }
 \end{figure}
-\note{Add label to colorgrid}
 \end{frame}
 
 \section{Two-Sample Test Based on Self-Organizing Maps}
@@ -747,7 +743,7 @@ Get rid of the figure and verbally explain.
 
     \item Approach 2
     \begin{itemize}
-        \item Can not use the full set to do the test (problem for small samples)
+        \item Can not use the full set to do the test (a problem for small samples)
         \item Underpowered since it uses a discrete test statistic
     \end{itemize}
 \end{enumerate}
@@ -848,7 +844,7 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
 \note{
     \begin{itemize}
         \item Red-line significance level ($\alpha$) which is fixed
-        \item The plot shows empirical significance level (95\%)
+        \item The plot shows an empirical significance level (95\%)
         \item Except for c2st-nn at samples 100, the bars overlap for Type II error.
     \end{itemize}
     DO NOT SAY, BACKUP:
