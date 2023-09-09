@@ -6,6 +6,8 @@
 \usepackage{multicol}
 \usepackage{xspace}
 \usepackage{emoji}
+\usepackage{tabularx}
+\usepackage[autolanguage]{numprint}
 \usepackage[backend=biber,style=authortitle,maxcitenames=1]{biblatex}
 
 \usepackage{pgfpages}
@@ -214,7 +216,6 @@ Focusing on \alert{multidimensional} distributions.
 \end{frame}
 
 \section{State of the Art}
-
 \begin{frame}{Systematic Literature Mapping}
 \begin{alertblock}{Questions}
     \begin{itemize}
@@ -226,17 +227,12 @@ Focusing on \alert{multidimensional} distributions.
 \end{alertblock}
 \begin{block}{Search strategy}
     \begin{itemize}
-        \item Backward Snowballing from \cite{Idreos2015}
+        \item Backward Snowballing \cite{Idreos2015}
         \item Forward Snowballing
-        \item Digital Libraries (ACM, IEEE, ...)
+        \item Digital Libraries (ACM, Elsevier, Springer, IEEE, \ldots)
         \item Two searches: 2017 and 2022
     \end{itemize}
 \end{block}
-\begin{block}{Exclusion Criteria}
-    \smallskip
-    Language, incomplete, off-topic, not primary, duplication (TODO: Add numbers, remove list of criteria).
-\end{block}
-
 \note{
 \begin{itemize}
     \item Since 2015 because Idreos 2015 is the bootstrap.
@@ -246,44 +242,25 @@ Focusing on \alert{multidimensional} distributions.
 }
 \end{frame}
 
-\begin{frame}{Classification}
-  TODO Remove, this content mention in next slide (plot).
-  %\begin{columns}[t, totalwidth=1.02\textwidth]
-    \metroset{block=fill}
-   % \begin{column}{0.45\linewidth}
-        \begin{block}{Category}
-            %Three main layers:
-            \begin{itemize}
-                \item User Interaction
-                    \begin{itemize}
-                        \item Data Visualization, Exploration Interfaces
-                    \end{itemize}
-                \item Middleware
-                    \begin{itemize}
-                        \item Interactive Performance Optimizations
-                    \end{itemize}
-                \item Database Layer
-                    \begin{itemize}
-                        \item Indexes, Data Storage
-                    \end{itemize}
-            \end{itemize}
-        \end{block}
-    %\end{column}
-    %\begin{column}{0.45\linewidth}
-        \begin{block}{Research type}
-            \begin{itemize}
-                \item Opinion Paper
-                \item Philosophical Paper
-                \item Evaluation Research
-                \item Proposal of Solution
-                \item Validation Research
-            \end{itemize}
-        \end{block}
-    %\end{column}
-    %\end{columns}
+\begin{frame}{Results}
+    \begin{table}
+    \small
+    \begin{tabularx}{\textwidth}{r r r r r r} \hline
+    \bf Accepted & \bf Duplicated & \bf Not Primary & \bf Off Topic & \bf Too Old & \bf Total \\ \hline
+    \multicolumn{6}{c}{\textbf{2017}} \\
+    242 & 9 & 16 & \numprint{5 295} & 126 & \numprint{5 688} \\
+    \numprint[\%]{4.25} & \numprint[\%]{0.16} & \numprint[\%]{0.28} & \numprint[\%]{93.09} & \numprint[\%]{2.22} & \numprint[\%]{100} \\
+    \\
+    \multicolumn{6}{c}{\textbf{2022}} \\
+    89 & 1 & 19 & \numprint{2359} & 0 & \numprint{2468} \\
+    \numprint[\%]{3.61} & \numprint[\%]{0.04} & \numprint[\%]{0.77} & \numprint[\%]{95.58} & \numprint[\%]{0.00} & \numprint[\%]{100} \\
+  \end{tabularx}
+  \caption{Accepted and rejected papers count.}\label{tab:mapping/acceptance}
+\end{table}
 \end{frame}
 
-\begin{frame}{}
+
+\begin{frame}{Classification}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{layer_vs_type.pdf}
@@ -293,14 +270,26 @@ Focusing on \alert{multidimensional} distributions.
 
 \begin{frame}{Conclusions}
     \begin{block}{RQ1. How has the research area evolved?}
-        \smallskip
-        All three layers are well studied, but the middleware layer is becoming a more popular target.
-        TODO: Add histogram here.
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.8\textwidth]{layer_histogram.pdf}
+            \caption{All three layers are well studied, but the middleware layer is becoming a more popular target.}
+        \end{figure}
     \end{block}
+\end{frame}
+        
+\begin{frame}{Conclusions}
     \begin{block}{RQ2. What is the maturity level of the research area?}
-        \smallskip
-        The vast majority of studies are \emph{Proposal of Solutions}. There is very little follow-up of implementations in practice.
-        TODO: Numbers (low number of validation)
+        \begin{table}
+        \begin{tabularx}{\textwidth}{r r r r r} \hline
+            \bf Validation & \bf Proposal & \bf Evaluation & \bf Philosophical & \bf Opinion \\ \hline
+            17 & 277 & 26 & 9 & 2 \\
+            \numprint[\%]{5.14} & \numprint[\%]{83.69} & \numprint[\%]{7.85} & \numprint[\%]{2.72} & \numprint[\%]{0.60}
+        \end{tabularx}
+        \caption{
+            The vast majority of studies are \emph{Proposal of Solutions}. There is very little follow-up of implementations in practice.        
+        }
+        \end{table}    
     \end{block}
 \end{frame}
 
@@ -308,7 +297,7 @@ Focusing on \alert{multidimensional} distributions.
     \begin{block}{RQ3. How far are we from a tool that solves our three requirements?}
         \begin{figure}
             \centering
-            \includegraphics[width=0.5\textwidth]{venn.pdf}
+            \includegraphics[width=0.4\textwidth]{venn.pdf}
         \end{figure}
         \cite{Han2017}
     \end{block}
