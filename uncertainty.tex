@@ -1,5 +1,5 @@
 \documentclass[10pt]{beamer}
-\usetheme[progressbar=frametitle]{metropolis}
+\usetheme[progressbar=frametitle,subsectionpage=progressbar]{metropolis}
 \usepackage{appendixnumberbeamer}
 \usepackage{booktabs}
 \usepackage{makecell}
@@ -10,7 +10,7 @@
 
 \usepackage{pgfpages}
 
-\setbeameroption{show notes on second screen}
+%\setbeameroption{show notes on second screen}
 
 \addbibresource{references.bib}
 \ExecuteBibliographyOptions{isbn=false,url=false,doi=true,eprint=false}
@@ -31,6 +31,7 @@
   }
 }
 
+% Simpler references
 \def\do#1{
   \DeclareBibliographyDriver{#1}{%
     \usebibmacro{bibindex}%
@@ -50,8 +51,36 @@
     \usebibmacro{finentry}}}
 \makeatother
 
+% Breadcrumbs
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+
+\makeatletter
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
+    \usebeamerfont{page number in head/foot}%
+    \usebeamertemplate*{frame footer}
+    \hfill%
+    \usebeamertemplate*{frame numbering}\vskip-4pt
+  \end{beamercolorbox}%
+
+  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}{section in head/foot}
+    \vskip2pt\insertnavigation{\paperwidth}\vskip-2pt
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+  \end{beamercolorbox}
+}
+\makeatother
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=lightgray}
+
 \newcommand{\PresQ}[0]{\textsc{PresQ}\xspace}
 \newcommand{\eqdist}{\stackrel{d}{=}}
+
+% Only sections on the index
+\setcounter{tocdepth}{1}
 
 % 2. El acto consistirá en la exposición oral por el doctorando del trabajo de
 % investigación elaborado ante los miembros del tribunal, refiriéndose
@@ -81,6 +110,10 @@ Programa Oficial de Doctorado en Ingeniería Informática de la Universidad de C
 \begin{document}
 
 \maketitle
+
+\begin{frame}{Overview}
+\tableofcontents
+\end{frame}
 
 \section{Introduction}
 
@@ -319,7 +352,7 @@ Focusing on \alert{multidimensional} distributions.
     Add to each slide the section (breadcrumb).
 }
 
-\subsection{Background}
+%\subsection{Background}
 
 \begin{frame}{IND vs EDD}
     \begin{block}{Inclusion Dependency (IND)}
@@ -466,7 +499,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
 }
 \end{frame}
 
-\subsection{Clique Finding}
+%\subsection{Clique Finding}
 \begin{frame}{Clique Finding}
     The problem can be mapped to finding cliques on hypergraphs: \textsc{Find2}~\footcite{koeller2003discovery}:
     
@@ -522,7 +555,7 @@ a k-uniform hypergraph, an edge connects k nodes.
 \end{frame}
 
 
-\subsection{Quasi-Clique Finding}
+%\subsection{Quasi-Clique Finding}
 \begin{frame}{Quasi-Clique Finding}
     \metroset{block=fill}
     \begin{alertblock}{Definition}
@@ -601,7 +634,7 @@ We can use (1), or (2), or both, which is more resilient.
     \end{alertblock}
 \end{frame}
 
-\subsection{Algorithm}
+%\subsection{Algorithm}
 
 \begin{frame}{}
     \begin{columns}
@@ -624,7 +657,7 @@ We can use (1), or (2), or both, which is more resilient.
     \end{columns}
 \end{frame}
 
-\section{Evaluation}
+\subsection{Evaluation}
 
 \begin{frame}{Clique Recovery: Missing Edges}
     \begin{figure}
@@ -679,7 +712,7 @@ Get rid of the figure and verbally explain.
 
 \section{Two-Sample Test Based on Self-Organizing Maps}
 
-\subsection{Background}
+%\subsection{Background}
 
 \begin{frame}{Classifier 2-Sample Tests}
     \begin{block}{}
@@ -746,7 +779,7 @@ Thanks to emergent properties, a classifier can be trained on the output space.
 }
 \end{frame}
 
-\subsection{Algorithm}
+%\subsection{Algorithm}
 
 \begin{frame}{SOM 2-Sample Test}
     \begin{block}{Algorithm}
