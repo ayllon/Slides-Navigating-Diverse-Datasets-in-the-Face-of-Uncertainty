@@ -1,4 +1,4 @@
-\documentclass[10pt,notes]{beamer}
+\documentclass[10pt]{beamer}
 \usetheme[progressbar=frametitle]{metropolis}
 \usepackage{appendixnumberbeamer}
 \usepackage{booktabs}
@@ -6,7 +6,7 @@
 \usepackage{multicol}
 \usepackage{xspace}
 \usepackage{emoji}
-\usepackage[backend=biber,style=alphabetic]{biblatex}
+\usepackage[backend=biber,style=authortitle,maxcitenames=1]{biblatex}
 
 \usepackage{pgfpages}
 
@@ -120,7 +120,7 @@ inconsistent or poorly documented schema.
     \begin{enumerate}
         \item Find existing techniques that help users to explore the data in situ.
         \item Identify gaps in the coverage of the existing techniques.
-        \item Design new algorithms tailored to numerical and uncertain data.
+        \item Design new algorithms tailored to numerical, uncertain data.
     \end{enumerate}
 \end{block}
 
@@ -132,14 +132,14 @@ Focusing on \alert{multidimensional} distributions.
 \section{Methodology}
 
 \begin{frame}{Framework}
-\begin{block}{\alert{Researching Information Systems and Computing}~\cite{Oates2006}}
+\begin{block}{\alert{Researching Information Systems and Computing}~\footcite{Oates2006}}
 
 \begin{description}
     \item[Purpose] The stated objective.
     \item[Products] Analysis of the state-of-the-art, and two new algorithms.
     \item[Process] See next slide.
     \item[Participants] Researcher, supervisor, reviewers.
-    \item[Paradigm] \emph{Pragmatism}~\cite{Shull2008}.
+    \item[Paradigm] \emph{Pragmatism}.
     \item[Presentation] Papers, posters, published software, the current dissertation, etc.
 \end{description}
 
@@ -165,59 +165,60 @@ Focusing on \alert{multidimensional} distributions.
 
 \begin{alertblock}{Literature Review}
     \smallskip
-    \emph{Systematic Literature Mapping}~\cite{Petersen2007}, a process for exploring
+    \cite{Petersen2007}, a process for exploring
     the situation of a wide research area with a high level of granularity.
 \end{alertblock}
 
 \begin{alertblock}{Strategy}
     \smallskip
-    \emph{Engineering Design}~\cite{Dym2012}, the systematic, intelligent generation and evaluation
+    \cite{Dym2012}, the systematic, intelligent generation and evaluation
     of specifications for artifacts whose form and function achieve stated objectives and satisfy specified
     constraints.
 \end{alertblock}
 
-}
+} % end note
+
 \end{frame}
 
 \section{State of the Art}
 
 \begin{frame}{Systematic Literature Mapping}
-\begin{figure}
-    \begin{alertblock}{Questions}
-        \begin{itemize}
-            \item RQ1. How has Interactive Data Exploration research evolved since 2015?
-            \item RQ2. What is the maturity level of the research area?
-            \item RQ3. How far are we from a tool that provides \alert{interactive} access
-                to \alert{raw} data files stored in \alert{distributed} storage?
-        \end{itemize}
-    \end{alertblock}
-    \begin{block}{Search strategy}
-        \begin{itemize}
-            \item Backward Snowballing from \cite{Idreos2015}
-            \item Forward Snowballing
-            \item Digital Libraries
-            \item Two searches: 2017 and 2022
-        \end{itemize}
-    \end{block}
-    \begin{block}{Exclusion Criteria}
-        \smallskip
-        Language, incomplete, off-topic, not primary, duplication.
-    \end{block}
-\end{figure}
+\begin{alertblock}{Questions}
+    \begin{itemize}
+        \item RQ1. How has Interactive Data Exploration research evolved since 2015?
+        \item RQ2. What is the maturity level of the research area?
+        \item RQ3. How far are we from a tool that provides \alert{interactive} access
+            to \alert{raw} data files stored in \alert{distributed} storage?
+    \end{itemize}
+\end{alertblock}
+\begin{block}{Search strategy}
+    \begin{itemize}
+        \item Backward Snowballing from \cite{Idreos2015}
+        \item Forward Snowballing
+        \item Digital Libraries (ACM, IEEE, ...)
+        \item Two searches: 2017 and 2022
+    \end{itemize}
+\end{block}
+\begin{block}{Exclusion Criteria}
+    \smallskip
+    Language, incomplete, off-topic, not primary, duplication (TODO: Add numbers, remove list of criteria).
+\end{block}
 
 \note{
 \begin{itemize}
-    \item Access at a higher granularity that File (how data is sharded is an "implementation detail")
+    \item Since 2015 because Idreos 2015 is the bootstrap.
+    \item Access at a higher granularity than file (how data is sharded is an "implementation detail")
     \item 5.688 papers in 2017 (242 accepted), 2.468 in 2022 (89 accepted)
 \end{itemize}
 }
 \end{frame}
 
 \begin{frame}{Classification}
+  TODO Remove, this content mention in next slide (plot).
   %\begin{columns}[t, totalwidth=1.02\textwidth]
     \metroset{block=fill}
    % \begin{column}{0.45\linewidth}
-        \begin{block}{Category~\cite{Idreos2015}}
+        \begin{block}{Category}
             %Three main layers:
             \begin{itemize}
                 \item User Interaction
@@ -236,7 +237,7 @@ Focusing on \alert{multidimensional} distributions.
         \end{block}
     %\end{column}
     %\begin{column}{0.45\linewidth}
-        \begin{block}{Research type~\cite{Wieringa2006}}
+        \begin{block}{Research type}
             \begin{itemize}
                 \item Opinion Paper
                 \item Philosophical Paper
@@ -261,10 +262,12 @@ Focusing on \alert{multidimensional} distributions.
     \begin{block}{RQ1. How has the research area evolved?}
         \smallskip
         All three layers are well studied, but the middleware layer is becoming a more popular target.
+        TODO: Add histogram here.
     \end{block}
     \begin{block}{RQ2. What is the maturity level of the research area?}
         \smallskip
         The vast majority of studies are \emph{Proposal of Solutions}. There is very little follow-up of implementations in practice.
+        TODO: Numbers (low number of validation)
     \end{block}
 \end{frame}
 
@@ -274,8 +277,7 @@ Focusing on \alert{multidimensional} distributions.
             \centering
             \includegraphics[width=0.5\textwidth]{venn.pdf}
         \end{figure}
-        \emph{{A} {D}istributed {I}n-situ {A}nalysis {M}ethod for {L}arge-scale
-{S}cientific {D}ata}~\cite{Han2017}
+        \cite{Han2017}
     \end{block}
 
 \note{
@@ -293,24 +295,29 @@ Focusing on \alert{multidimensional} distributions.
 
 \begin{frame}{Insights}
     \begin{block}{}
-        Most solutions treat files as separate, independent relations~\cite{Silva2016}. They offer
+        Most solutions treat files as separate, independent relations~\footcite{Silva2016}. They offer
         little to no assistance in finding relations that \textit{overlap}: \alert{Schema Homogenization}.
     \end{block}
     \begin{block}{}
-        One exception is \textsc{Kayak}~\cite{maccioni_crossing_2017}.
+        One exception is \textsc{Kayak}~\footcite{maccioni_crossing_2017}.
         \begin{itemize}
-            \item Integrates \textsc{Metanome}~\cite{papenbrock2015data}.
+            \item Integrates \textsc{Metanome}~\footcite{papenbrock2015data}.
             \item Based on \emph{Inclusion Dependencies} (IND): discrete data types.
+            \item TODO: Image usually journals ask for? Some illustration
+            \item TODO: Move the figure of the lattice here, use it as an excuse to introduce IND, rules, and *then* talk PresQ.
         \end{itemize}
     \end{block}
     \begin{block}{}
-        \emph{Identifying Relationships between Scientific Datasets}~\cite{alawini2016} does not
-        consider multidimensional attributes
+        \cite{alawini2016} does not consider multidimensional attributes
     \end{block}
     \alert{\textbf{Can we generalize IND to uncertain, multidimensional sets of attributes?}}
 \end{frame}
 
 \section{\PresQ}
+\note{
+    Be explicit this is the main contribution (state-of-the-art is done).
+    Add to each slide the section (breadcrumb).
+}
 
 \subsection{Background}
 
@@ -321,7 +328,7 @@ Focusing on \alert{multidimensional} distributions.
         R and column B of relation S, written $R.A \subseteq S.B$, asserts that each
         value of A appears in B. Similarly, for two sets of columns X
         and Y , we write $R.X \subseteq S.Y$ , or $X \subseteq Y$ , when each distinct
-        combination of values in X appears in Y~\cite{abedjan2015}
+        combination of values in X appears in Y~\footcite{abedjan2015}
     \end{block}
     \begin{block}{\alert{Equally-Distributed Dependency (EDD)}}
         \smallskip
@@ -340,7 +347,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \begin{block}{Reflexivity}
         $R[X] \eqdist R[X]$
     \end{block}
-    \begin{block}{Permutation and projection}
+    \begin{block}{Permutation and \alert{projection}}
         If $R[A_1,\dots,A_n] \eqdist S[B_1,\dots,B_n]$ then
         $R[A_{i_1},\dots,A_{i_m}] \eqdist S[B_{i_1},\dots,B_{i_m}]$ for each sequence
         $i_1,\dots,i_m$ of distinct integers from $\{1,\dots,n\}$
@@ -352,10 +359,16 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \metroset{block=transparent}
     \begin{block}{}
     The reflexivity, permutation, and transitivity rules are well-known to hold
-    for $\eqdist$ \cite{randles1979introduction}.
+    for $\eqdist$ \footcite{randles1979introduction}.
 
     For the projection, see \alert{Section 5.1, Proof 1} (page 53).
     \end{block}
+
+\note{
+    This *needs* to be satisfied. The contribution is the proof.
+    Follow the Thesis schema (before PresQ section). Or EDD after these slides.
+    Make contribution clear.
+}
 \end{frame}
 
 \begin{frame}{Search Space}
@@ -376,6 +389,10 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     given a significance level $\alpha$.
     This is denoted as $d \models I$.
     \end{block}
+
+\note{
+    This is adapted from IND, not a contribution.
+}
 \end{frame}
 
 \begin{frame}{Search Space}
@@ -430,7 +447,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
 \begin{frame}{Complexity}
 
     It turns out that finding INDs/EDDs is one of the hardest computer science
-    problems~\cite{Blsius2017}.
+    problems~\footcite{Blsius2017}.
     
     \begin{itemize}
         \item It is \textbf{NP-hard}.
@@ -451,7 +468,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
 
 \subsection{Clique Finding}
 \begin{frame}{Clique Finding}
-    The problem can be mapped to finding cliques on hypergraphs: \textsc{Find2}~\cite{koeller2003discovery}:
+    The problem can be mapped to finding cliques on hypergraphs: \textsc{Find2}~\footcite{koeller2003discovery}:
     
     \begin{enumerate}
         \item Pairwise matches (1EDD) are mapped to \textbf{nodes}.
@@ -557,26 +574,28 @@ We can use (1), or (2), or both, which is more resilient.
 \note{
  Hypergeometric: sampling without replacement. Define drawing an edge connecting a node V as a success and any other a failure.
  If the quasi-clique misses |E| edges, and the node has degree(V) missing edges, what's the probability that is just chance?
+
+ TODO: Change color node I mention
 }
 \end{frame}
 
 \begin{frame}{\PresQ}
 
     \begin{block}{}
-    \PresQ~\cite{AlvarezAyllonPresQ2022} is an algorithm for finding quasi-cliques on uniform
+    \PresQ is an algorithm for finding quasi-cliques on uniform
     $k$-hypergraphs.
     
     \begin{enumerate}
-        \item Finds ``seeds'' using a modified version of \textsc{Hyperclique}~\cite{koeller2003discovery}.
+        \item Finds ``seeds'' using a modified version of \textsc{Hyperclique}~\footcite{koeller2003discovery}.
         \item Grows the ``seeds'' following a tree-shaped, depth-first
-        traversal~\cite{uno_efficient_2010}.
+        traversal~\footcite{uno_efficient_2010}.
     \end{enumerate}
     \end{block}
     
     \begin{alertblock}{Complexity}
         \smallskip
         The number of maximal cliques is bound in general by $\Omega(a^{|V|/b})$,
-        where $a, b$ are two constants that depend on the rank of the hypergraph~\cite{Tomescu1981}.
+        where $a, b$ are two constants that depend on the rank of the hypergraph~\footcite{Tomescu1981}.
         
         The worst-case is always going to be exponential.
     \end{alertblock}
@@ -605,7 +624,7 @@ We can use (1), or (2), or both, which is more resilient.
     \end{columns}
 \end{frame}
 
-\section{\PresQ Experiments}
+\section{Evaluation}
 
 \begin{frame}{Clique Recovery: Missing Edges}
     \begin{figure}
@@ -613,6 +632,7 @@ We can use (1), or (2), or both, which is more resilient.
         \includegraphics{3hyper_alpha}
         \caption{Robustness wrt. missing edges (3-hypergraph)}
     \end{figure}
+    \note{Remove timeouts, separate and make clearer}
 \end{frame}
 
 \begin{frame}{Clique Recovery: Correlated Missing / Spurious}
@@ -639,6 +659,7 @@ Removed and added purely random. With actual data $\Lambda$ is more robust.
 
 \note{
 Tables 5.6 and 5.7 contain more detailed results for this experiment.
+Get rid of the figure and verbally explain.
 }
 \end{frame}
 
@@ -650,9 +671,10 @@ Tables 5.6 and 5.7 contain more detailed results for this experiment.
         Pairwise max arity found on the \emph{Aircraft Fuel Distribution System} dataset for each pair of scenarios.
         Without even knowing the structure or content of the files, we can see that
         scenarios two and three are the most similar, which we can confirm in the
-        original paper~\cite{Gheraibia2019}.
+        original paper~\footcite{Gheraibia2019}.
     }
 \end{figure}
+\note{Add label to colorgrid}
 \end{frame}
 
 \section{Two-Sample Test Based on Self-Organizing Maps}
@@ -663,7 +685,7 @@ Tables 5.6 and 5.7 contain more detailed results for this experiment.
     \begin{block}{}
         A binary classifier can be seen as a two-sample test.
         If a classifier has a better-than-chance performance (50\%), the two classes do not originate from the same
-        population~\cite{friedman2004multivariate}.
+        population~\footcite{friedman2004multivariate}.
         \smallskip
         Given two samples $P$ and $Q$:
         \begin{enumerate}
@@ -675,11 +697,11 @@ Tables 5.6 and 5.7 contain more detailed results for this experiment.
 
 \begin{frame}{Classifier 2-Sample Tests}
     \metroset{block=fill}
-    \begin{block}{Approach 1~\cite{friedman2004multivariate}}
+    \begin{block}{Approach 1~\footcite{friedman2004multivariate}}
         A classifier is trained on $U$ to predict the label. The classifier score function $F(u)$ is used
         to reduce the n-dimensional statistical test to a 1-dimensional statistical test.
     \end{block}
-    \begin{block}{Approach 2~\cite{lopez2016revisiting}}
+    \begin{block}{Approach 2~\footcite{lopez2016revisiting}}
         $U$ is split into training and test sets. The accuracy of the classifier on the test set is the test statistic.
     \end{block}
 
@@ -706,12 +728,12 @@ Tables 5.6 and 5.7 contain more detailed results for this experiment.
     \smallskip
     
     The output space is modeled as a grid of \emph{neurons} that \emph{responds} to a set of
-    values from the input space~\cite{kohonen1982self}.
+    values from the input space~\footcite{kohonen1982self}.
 
     \smallskip
     
     \alert{The output model preserves the topology of the input space}: any continuous changes
-    in the input data cause a continuous change on the neural map~\cite{Villmann1999}.
+    in the input data cause a continuous change on the neural map~\footcite{Villmann1999}.
     
     \metroset{block=fill}
     \begin{alertblock}{Insight}
@@ -720,7 +742,7 @@ Tables 5.6 and 5.7 contain more detailed results for this experiment.
     \end{alertblock}    
 
 \note{
-Thanks to emergent properties, a classifier can be trained on the output space
+Thanks to emergent properties, a classifier can be trained on the output space.
 }
 \end{frame}
 
@@ -738,7 +760,7 @@ Thanks to emergent properties, a classifier can be trained on the output space
         Under the null hypothesis, the test statistic follows a $\chi^2$ distribution with $k - c$ degrees of freedom,
         \begin{itemize}
             \item $k$ is the number of cells (neurons) where ${R_i + S_i > 0}$
-            \item $c = 1$ if the sample sizes are equal, or $c = 0$ otherwise~\cite{press1993numerical}.
+            \item $c = 1$ if the sample sizes are equal, or $c = 0$ otherwise~\footcite{press1993numerical}.
         \end{itemize}        
     \end{block}
 \end{frame}
@@ -749,12 +771,12 @@ Thanks to emergent properties, a classifier can be trained on the output space
             
             \begin{itemize}
                 \item Visualization
-                \item Clustering~\cite{ultsch2005esom}
+                \item Clustering~\footcite{ultsch2005esom}
             \end{itemize}
 
         \item The full dataset is used.
         \item It works with unbalanced sample sizes from $X$ and $Z$.
-        \item It can be generalized to non-vectorial data~\cite{kohonen1982self}.
+        \item It can be generalized to non-vectorial data~\footcite{kohonen1982self}.
     \end{itemize}
 
 \note{
@@ -762,14 +784,14 @@ Non-vectorial as long as there is a distance metric and training is done in batc
 }
 \end{frame}
 
-\subsection{Experiments}
+\subsection{Evaluation}
 
 \begin{frame}{Experiment: Multidimensional Normal Distribution}
     \begin{block}{Evaluated Alternatives}
         \smallskip
         \begin{itemize}
-            \item Nearest neighbor type coincidences~\cite{Henze1988, Schilling1986b}.
-            \item Classifier two-sample tests~\cite{lopez2016revisiting}.
+            \item Nearest neighbor type coincidences~\footcite{Henze1988, Schilling1986b}.
+            \item Classifier two-sample tests.
         \end{itemize}
     \end{block}
     \begin{block}{``Fair'' Distributions}
@@ -810,6 +832,9 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
     \centering
     \includegraphics[height=\textheight]{normal_location_fair}
 \end{figure}
+\note{
+TODO: Improve contrast
+}
 \end{frame}
 
 \begin{frame}{Experiment: Eye Movement Dataset}
@@ -818,14 +843,14 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
         11 subjects were shown a question and a list of ten 
         sentences: one correct answer (C), four relevant for the question (R), and five irrelevant (I).
         
-        Their eye movement was measured for each answer and summarized into 22 features~\cite{salojarvi2005inferring}.
+        Their eye movement was measured for each answer and summarized into 22 features~\footcite{salojarvi2005inferring}.
     \end{block}
     \begin{block}{Evaluated Alternatives}
         \smallskip
         \begin{itemize}
-            \item Nearest neighbor type coincidences~\cite{Henze1988, Schilling1986b}.
-            \item Classifier two-sample tests~\cite{lopez2016revisiting}.
-            \item Kernel-Based methods MMD-B~\cite{zaremba2013b} and Song's~\cite{song2021fast}.
+            \item Nearest neighbor type coincidences.
+            \item Classifier two-sample tests.
+            \item Kernel-Based methods MMD-B~\footcite{zaremba2013b} and Song's~\footcite{song2021fast}.
         \end{itemize}
     \end{block}
 \end{frame}
@@ -865,7 +890,7 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
         \includegraphics[trim=5pt 75pt 5pt 5pt,clip,width=0.9\textwidth]{eye_features.eps}
         \caption{
             The features ``Regression length'' and ``regression duration'' stand out.
-            They are related to re-reading a word, which is expected to happen when reading a correct answer~\cite{salojarvi2005inferring}.
+            They are related to re-reading a word, which is expected to happen when reading a correct answer~\footcite{salojarvi2005inferring}.
         }
     \end{figure}
 
@@ -876,12 +901,14 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
 
 
 \begin{frame}{Caveat}
-    Rosenblatt~\cite{rosenblatt2019better} argue that provable test statistics
+    \cite{rosenblatt2019better} argues that provable test statistics
     should be preferred over heuristic alternatives.
-    \smallskip
-    Our proposal is oriented toward \alert{exploring} abundant structured data.
+        
+    Our proposal is oriented toward exploring abundant structured data.
     Developing a tailored statistic for all possible combinations is not viable,
-    and a pragmatic approach is more suitable~\cite{kim2021classification}.
+    and a pragmatic approach is more suitable~\footcite{kim2021classification}.
+
+    \note{TODO: Itemize}
 \end{frame}
 
 \section{Threats to Validity}
@@ -919,49 +946,12 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
         \smallskip
 
         For the SOM statistical test, in the interests of transparency, we have incorporated a set
-        of ``fair'' tests explicitly designed to show the shortcomings of multidimensional statistical tests~\cite{ramdas2015decreasing}.
+        of ``fair'' tests explicitly designed to show the shortcomings of multidimensional statistical tests.
         
     \end{alertblock}
 \end{frame}
 
 \section{Conclusions}
-
-%\begin{frame}{Contributions}
-%    \begin{alertblock}{Survey of the State of the Art}
-%        \smallskip
-%        Contribute to the first sub-objective: finding existing techniques that help users to explore the data \emph{in-situ}.
-%    \end{alertblock}
-
-%    \begin{block}{New category for IDE: \alert{Schema Homogenization}}
-%        \smallskip
-%        Contributes to the first and second sub-objectives: identify gaps in the coverage.
-%    \end{block}
-
-%    \begin{alertblock}{Equally-Distributed Dependency}
-%        \smallskip
-%        Contributes to the second sub-objective: identify gaps in the coverage.
-%    \end{alertblock}
-%\end{frame}
-
-%\begin{frame}{Contributions: Algorithms}
-%    \begin{alertblock}{\PresQ}
-%        \smallskip
-%        It can be used to find sets of Equally-Distributed attributes between datasets.
-%        The Quasi-clique component can potentially be of use to other areas such as
-%        chemistry or biology~\cite{Bretto2013}.
-%    \end{alertblock}
-
-%    \begin{alertblock}{Two-Sample Test Based on SOM}
-%        \smallskip
-%        A statistical test with a performance comparable to other tests based on machine learning models,
-%        with an interpretable output.
-%    \end{alertblock}
-
-%    \begin{block}{}
-%    These two algorithms contribute to the third sub-objective: design new algorithms tailored to numerical and
-%    uncertain data.
-%    \end{block}
-%\end{frame}
 
 \begin{frame}{Contributions}
 
@@ -1007,7 +997,7 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
         
         \item \alert{Partial equality-of-distribution}
                 
-        \item A Bayesian EDD finding algorithm (i.e., prior support, partial EDD~\cite{soriano2015bayesian}).
+        \item A Bayesian EDD finding algorithm (i.e., prior support, partial EDD~\footcite{soriano2015bayesian}).
         
         \item Dimensionality reduction before EDD finding.
             
@@ -1015,6 +1005,7 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
         based on the values from a given set of attributes).
 
         \item Applications on privacy-preserving data mining.
+
     \end{itemize}
 
 \note{
@@ -1025,6 +1016,9 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
     \begin{itemize}
         \item  Experiment with Open University Learning Analytics Dataset shows an "attribute disclosure": the attackers improve their knowledge of a set of attributes for a given individual. i.e. young female from North Western, most likely deprived (low income, low employment, etc.).
     \end{itemize}
+    \item TODO: Add backup slide privacy-preserving
+    \item TODO Contributions last thing?
+    \item Add one more slide for photos and stop there
 \end{itemize}
 }
 \end{frame}
@@ -1037,10 +1031,6 @@ Codebooks for a subset of the parameters: how each neuron is sensitive to a give
 }
 
 \appendix
-
-\begin{frame}[allowframebreaks]{Bibliography}
-\printbibliography[]
-\end{frame}
 
 {\setbeamercolor{palette primary}{fg=white, bg=black}
 \begin{frame}[standout]
