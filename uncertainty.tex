@@ -972,7 +972,50 @@ TODO: Improve contrast
     \end{alertblock}
 \end{frame}
 
-\section{Conclusions}
+\section{Future Work \& Conclusion}
+
+\begin{frame}{Future Work}
+    \begin{block}{Performance improvements}
+        \begin{itemize}
+            \item Improve the quasi-clique finding algorithm.
+            \item Data-aware quasi-clique finding algorithms.
+            \item Dimensionality reduction before EDD finding.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Generalization}
+        \begin{itemize}
+            \item \alert{Partial equality-of-distribution}
+            \item Bayesian EDD finding algorithms.
+            \item \alert{Multidimensional \emph{complementarity}}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Applications}
+        \begin{itemize}
+           \item Applications on privacy-preserving data mining.
+        \end{itemize}    
+    \end{block}
+   
+
+\note{
+\begin{itemize}
+    \item Data-aware: Somehow, considering correlation matrix, for instance?
+    
+    \item Bayesian: can check local null hypothesis testing so that we can accept a candidate with only partial support.
+         Support for priors~\footcite{soriano2015bayesian}.
+    \item Multidimensional \emph{complementarity} (i.e., a dataset may be split 
+          based on the values from a given set of attributes).
+          
+    \item Privacy-preserving: linking attacks
+    \begin{itemize}
+        \item  Experiment with Open University Learning Analytics Dataset shows an "attribute disclosure": the attackers improve their knowledge of a set of attributes for a given individual. i.e. young female from North Western, most likely deprived (low income, low employment, etc.).
+    \end{itemize}
+    \item TODO: Add backup slide privacy-preserving
+    \item Add one more slide for photos and stop there
+\end{itemize}
+}
+\end{frame}
 
 \begin{frame}{Contributions}
 
@@ -998,7 +1041,7 @@ TODO: Improve contrast
 
 \end{frame}
 
-\begin{frame}{Contributions}
+\begin{frame}{Conclusion}
 
 \metroset{block=fill}
 \begin{block}{\emoji{white-check-mark} Main Objective}
@@ -1009,40 +1052,6 @@ TODO: Improve contrast
 
 \end{frame}
 
-
-\begin{frame}{Future Work}
-    \begin{itemize}
-        \item Improve the quasi-clique finding algorithm.
-                
-        \item Data-aware quasi-clique finding algorithms.
-        
-        \item \alert{Partial equality-of-distribution}
-                
-        \item A Bayesian EDD finding algorithm (i.e., prior support, partial EDD~\footcite{soriano2015bayesian}).
-        
-        \item Dimensionality reduction before EDD finding.
-            
-        \item \alert{Multidimensional \emph{complementarity}} (i.e., a dataset may be split 
-        based on the values from a given set of attributes).
-
-        \item Applications on privacy-preserving data mining.
-
-    \end{itemize}
-
-\note{
-\begin{itemize}
-    \item Data-aware: Somehow, considering correlation matrix, for instance?
-    \item Bayesian: can check local null hypothesis testing, so we can accept a candidate with only partial support
-    \item Privacy preserving: linking attacks
-    \begin{itemize}
-        \item  Experiment with Open University Learning Analytics Dataset shows an "attribute disclosure": the attackers improve their knowledge of a set of attributes for a given individual. i.e. young female from North Western, most likely deprived (low income, low employment, etc.).
-    \end{itemize}
-    \item TODO: Add backup slide privacy-preserving
-    \item TODO Contributions last thing?
-    \item Add one more slide for photos and stop there
-\end{itemize}
-}
-\end{frame}
 
 \definecolor{myblue}{RGB}{35,55,59}
 {\setbeamercolor{palette primary}{fg=white, bg=myblue}
