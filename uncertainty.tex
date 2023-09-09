@@ -12,7 +12,7 @@
 
 \usepackage{pgfpages}
 
-\setbeameroption{show notes on second screen}
+%\setbeameroption{show notes on second screen}
 
 \addbibresource{references.bib}
 \ExecuteBibliographyOptions{isbn=false,url=false,doi=true,eprint=false}
@@ -60,11 +60,11 @@
 
 \makeatletter
 \setbeamertemplate{footline}{%
-  \begin{beamercolorbox}[wd=\textwidth, sep=3ex]{footline}%
+  \begin{beamercolorbox}[wd=\textwidth, sep=2ex]{footline}%
     \usebeamerfont{page number in head/foot}%
     \usebeamertemplate*{frame footer}
     \hfill%
-    \usebeamertemplate*{frame numbering}\vskip-4pt
+    \usebeamertemplate*{frame numbering}\vskip-2pt
   \end{beamercolorbox}%
 
   \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
@@ -368,23 +368,19 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \begin{block}{Reflexivity}
         $R[X] \eqdist R[X]$
     \end{block}
-    \begin{block}{Permutation and \alert{projection}}
+    \begin{block}{Transitivity}
+        $ R[X] \eqdist S[Y] \land S[Y] \eqdist T[Z] \implies R[X] \eqdist T[Z]$
+    \end{block}
+    \begin{block}{Permutation and \alert{Projection}}
         If $R[A_1,\dots,A_n] \eqdist S[B_1,\dots,B_n]$ then
         $R[A_{i_1},\dots,A_{i_m}] \eqdist S[B_{i_1},\dots,B_{i_m}]$ for each sequence
         $i_1,\dots,i_m$ of distinct integers from $\{1,\dots,n\}$
     \end{block}
-    \begin{block}{Transitivity}
-        $ R[X] \eqdist S[Y] \land S[Y] \eqdist T[Z] \implies R[X] \eqdist T[Z]$
-    \end{block}
     
-    \metroset{block=transparent}
-    \begin{block}{}
-    The reflexivity, permutation, and transitivity rules are well-known to hold
+    Reflexivity, permutation, and transitivity rules hold
     for $\eqdist$ \footcite{randles1979introduction}.
 
     For the projection, see \alert{Section 5.1, Proof 1} (page 53).
-    \end{block}
-
 \note{
     This *needs* to be satisfied. The contribution is the proof.
     Follow the Thesis schema (before PresQ section). Or EDD after these slides.
