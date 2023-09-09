@@ -852,9 +852,6 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
     \centering
     \includegraphics[height=\textheight]{normal_location_fair}
 \end{figure}
-\note{
-TODO: Improve contrast
-}
 \end{frame}
 
 \begin{frame}{Experiment: Eye Movement Dataset}
@@ -1010,10 +1007,8 @@ TODO: Improve contrast
           
     \item Privacy-preserving: linking attacks
     \begin{itemize}
-        \item  Experiment with Open University Learning Analytics Dataset shows an "attribute disclosure": the attackers improve their knowledge of a set of attributes for a given individual. i.e. young female from North Western, most likely deprived (low income, low employment, etc.).
+        \item  Experiment with Open University Learning Analytics Dataset shows an "attribute disclosure": the attackers improve their knowledge of a set of attributes for a given individual. i.e., young females from North Western, most likely deprived (low income, low employment, etc.).
     \end{itemize}
-    \item TODO: Add backup slide privacy-preserving
-    \item Add one more slide for photos and stop there
 \end{itemize}
 }
 \end{frame}
@@ -1133,6 +1128,44 @@ TODO: Improve contrast
     \centering
     \includegraphics[height=\textheight]{eye_regress-eps-converted-to.pdf}
 \end{figure}
+\end{frame}
+
+\begin{frame}{Open University Learning Analytics Dataset}
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{imd}
+    \caption[Comparing \glsfmtlong{SOM} density variations.]{Density of samples for the general population (left), poorest segment (center) and
+    relative difference (right). Cells with a value of $-1$ do not have any low-income students,
+    while those with a value of $0.5$ show an ``excess'' with respect to the general
+    population.}
+\end{figure}
+    \cite{kuzilek_open_2017}
+\note{
+Let us consider the case of a researcher with the hypothesis that gender, age, and
+region of origin influence a student's economic situation, or perhaps they could
+be trying to deanonymize the data.
+}
+\end{frame}
+
+\begin{frame}{Open University Learning Analytics Dataset}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imd_histogram}
+    \caption[Histogram of the \glsfmtlong{IMD} for two populations.]{
+        \emph{Indices of Multiple Deprivations} for the general population (left) and for
+        young female students from the \emph{North Western Region}.
+    }
+    \begin{block}{}
+    One of the cells with the highest bias toward low-income students
+    contains only young female students from the \emph{North Western Region}.
+    The income for this demographic is skewed toward the low end.
+    \end{block}
+\end{figure}
+\note{
+We could obtain this hindsight without prior knowledge of which
+attributes correlate with the difference, only with the ``hunch'' that
+there is a relation. Thus, we prove that our proposed test can be useful for data exploration.
+}
 \end{frame}
 
 \end{document}
