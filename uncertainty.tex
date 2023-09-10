@@ -12,7 +12,7 @@
 
 \usepackage{pgfpages}
 
-%\setbeameroption{show notes on second screen}
+\setbeameroption{show notes on second screen}
 
 \addbibresource{references.bib}
 \ExecuteBibliographyOptions{isbn=false,url=false,doi=true,eprint=false}
@@ -337,14 +337,8 @@ Focusing on \alert{multidimensional} distributions.
     \alert{\textbf{Can we generalize IND to uncertain, multidimensional sets of attributes?}}
 \end{frame}
 
-% \item TODO: Move the figure of the lattice here, use it as an excuse to introduce IND, rules, and *then* talk PresQ.
-
-\section{\PresQ}
-
-%\subsection{Background}
-
-\begin{frame}{IND vs EDD}
-    \begin{block}{Inclusion Dependency (IND)}
+\begin{frame}{Inclusion Dependency (IND)}
+    \begin{block}{}
         \smallskip
         An inclusion dependency between column A of relation
         R and column B of relation S, written $R.A \subseteq S.B$, asserts that each
@@ -352,16 +346,22 @@ Focusing on \alert{multidimensional} distributions.
         and Y , we write $R.X \subseteq S.Y$ , or $X \subseteq Y$ , when each distinct
         combination of values in X appears in Y~\footcite{abedjan2015}
     \end{block}
+\note{
+How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
+}
+\end{frame}
+
+\section{\PresQ}
+
+%\subsection{Background}
+
+\begin{frame}{Generalization of IND}
     \begin{block}{\alert{Equally-Distributed Dependency (EDD)}}
         \smallskip
         An equally-distributed dependency between a set of columns X
         of relation R and a set of columns Y of relation S, written $R.X \eqdist S.Y$ or
         $X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
     \end{block}
-
-\note{
-How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
-}
 \end{frame}
 
 \begin{frame}{Inference Rules}
@@ -419,6 +419,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \includegraphics[width=\textwidth]{lattice.pdf}
     \caption{Search space for INDs}
 \end{figure}
+\note{Lattice!}
 \end{frame}
 
 \begin{frame}{Traversal}
@@ -431,6 +432,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \end{enumerate}
 
 \note{
+    ONLY FOR BACKUP
     \begin{exampleblock}{Example}
     \smallskip
     If we have two sets of $10$ attributes that are equally distributed, the number of
@@ -476,11 +478,18 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \bigskip
 
 \note{
-    Another option is Top-Down search (optimistic): we assume $n$ 1-EDDs are derived from a single $n$-EDD.
-    \bigskip
-    But we risk being too optimistic and needing to traverse the full search space from top to bottom.
-    \bigskip
-    We can alternate between bottom-up (pessimistic) and top-down (optimistic).
+\begin{itemize}
+    \item Another option is Top-Down search (optimistic): we assume $n$ 1-EDDs are derived from a single $n$-EDD.
+    \item But we risk being too optimistic and needing to traverse the full search space from top to bottom.
+    \item We can alternate between bottom-up (pessimistic) and top-down (optimistic).
+
+    \item The decision problem of whether there is a clique of a
+    certain minimum size in a graph is NP-complete. Thus, finding all
+    cliques in a graph is NP-hard\footcite{koeller2002integration}.
+    
+    \item BACKUP: Find2 Complexity
+    $\Theta(|V|^4 · |C|^2)$, where $|C|$ is the set of cliques.
+\end{itemize}
 }
 \end{frame}
 
