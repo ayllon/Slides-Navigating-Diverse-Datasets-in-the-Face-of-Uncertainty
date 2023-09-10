@@ -120,7 +120,7 @@ Programa Oficial de Doctorado en Ingeniería Informática de la Universidad de C
 
 \begin{frame}{Motivation}
 \begin{enumerate}
-    \item Data exploration represents the fourth paradigm of scientific exploration, alongside experimental, theoretical, and computer-simulation paradigms.
+    \item Data exploration represents the fourth paradigm of scientific exploration, alongside experimental, theoretical, and computer-simulation.
     \item Data exploration is a vital component of the data-intensive scientific process.
     \item Researchers must curate, understand, and extract information from data sets.
     \item To extract knowledge, first, they need to identify patterns: \alert{data mining}.
@@ -328,6 +328,7 @@ Focusing on \alert{multidimensional} distributions.
 
 \note{
     Based on \emph{Inclusion Dependencies} (IND): discrete data types.
+    
     BACKUP
     \cite{alawini2016} considers numerical attributes, but only 1D.
 }
@@ -362,7 +363,8 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
         \end{enumerate}
     \end{block}
     \begin{block}{Satisfiability}
-         Let $I_1$, $I_2$ be two candidate INDs such that $I_1 \prec I_2$.
+         Let $I_1$, $I_2$ be two candidate INDs such that $I_1 \prec I_2$, and $d$ a dataset.
+         $d \models I_i$ denotes that an IND $I_i$ exists on the dataset.
          \begin{enumerate}
              \item If $d \models I_2$, then $d \models I_1$
              \item If $d \not\models I_1$, then $d \not\models I_2$
@@ -437,24 +439,22 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
         \end{enumerate}
     \end{block}
 
-    \begin{alertblock}{Satisfiability}
-    Let $I = R[X] \eqdist S[Y]$.
-    A dataset $d$ \emph{satisfies} $I$ iff  a statistical test fails to reject $H_0: P(R[X]) = P(S[Y])$
-    given a significance level $\alpha$.
-    This is denoted as $d \models I$.
-    \end{alertblock}
-
 \note{
     Partial Order is the same, replacing $\subseteq$ with $\eqdist$,
     which we can do thanks to the previous proofs.
-
-    \alert{Satisfiability changes}. Purging upwards is not trivial anymore.
 }
 \end{frame}
 
 \begin{frame}{Search Space}
     \metroset{block=fill}
     \begin{alertblock}{Satisfiability}
+    Let $I = R[X] \eqdist S[Y]$.
+    A dataset $d$ \emph{satisfies} $I$ iff  a statistical test fails to reject $H_0: P(R[X]) = P(S[Y])$
+    given a significance level $\alpha$.
+    This is denoted as $d \models I$.
+
+    \medskip
+    
     Given $I_1 \prec I_2$:
     
     \begin{enumerate}
@@ -465,7 +465,12 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \end{alertblock}
 
 \note{
+    \alert{Satisfiability changes}. Purging upwards is not trivial anymore.
+    
+    \bigskip
+    
     ONLY FOR BACKUP
+    
     \begin{exampleblock}{Example}
     \smallskip
     If we have two sets of $10$ attributes that are equally distributed, the number of
@@ -486,15 +491,20 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
         
     \begin{alertblock}{Complexity}
     \smallskip
-    Generally, if we have an n-EDD between two datasets and traverse the lattice bottom-up, we need
-    to test...
+    Generally, if we have an n-EDD between two datasets and traverse the lattice bottom-up,
+    the number of possible combinations we need to test is:
     
     \begin{equation*}
         \sum_{k=1}^{n}{\binom{n}{k}} = \sum_{k=1}^{n} \frac{n!}{n!(n - k)!}
     \end{equation*}
     
-    possible combinations of attributes.
     \end{alertblock}
+
+\note{
+Another option is a Top-Down search (optimistic): we assume $n$ 1-EDDs are derived from a single $n$-EDD.
+
+But we risk being too optimistic and needing to traverse the full search space from top to bottom.
+}
 \end{frame}
 
 \begin{frame}{Complexity}
@@ -512,15 +522,13 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
 
 \note{
 \begin{itemize}
-    \item Another option is Top-Down search (optimistic): we assume $n$ 1-EDDs are derived from a single $n$-EDD.
-    \item But we risk being too optimistic and needing to traverse the full search space from top to bottom.
-    \item We can alternate between bottom-up (pessimistic) and top-down (optimistic).
+    \item BACKUP:
 
     \item The decision problem of whether there is a clique of a
     certain minimum size in a graph is NP-complete. Thus, finding all
     cliques in a graph is NP-hard\footcite{koeller2002integration}.
     
-    \item BACKUP: Find2 Complexity
+    \item Find2 Complexity
     $\Theta(|V|^4 · |C|^2)$, where $|C|$ is the set of cliques.
 \end{itemize}
 }
@@ -654,11 +662,15 @@ We can use (1), or (2), or both, which is more resilient.
     
     \begin{alertblock}{Complexity}
         \smallskip
-        The number of maximal cliques is bound in general by $\Omega(a^{|V|/b})$,
-        where $a, b$ are two constants that depend on the rank of the hypergraph~\footcite{Tomescu1981}.
+        The number of maximal cliques is bound by $\Omega(a^{|V|/b})$,
+        where $a, b$ are two constants that depend on the rank of the hypergraph.
         
         The worst-case is always going to be exponential.
     \end{alertblock}
+
+\note{
+\cite{Tomescu1981} for proof of the number of maximal cliques bound.
+}
 \end{frame}
 
 %\subsection{Algorithm}
@@ -726,11 +738,15 @@ strike a good balance between the completeness of the result ($7 - 25\%$ on the 
 \end{block}
 
 \note{
-For $\Lambda = 0$, the search algorithm is too greedy and accepts quasi-cliques that are poor candidates.
-Too many are invalid (8 times more candidates than valid) and must be fed back to the algorithm, increasing run-time.
-For $\Lambda = 1$, the search algorithm is too restrictive. Its precision is high,
-but it spends a long time enumerating small cliques. $\Lambda = 0.05$ provides
-the right balance, improving the result and performance.
+\begin{itemize}
+    \item For $\Lambda = 0$, the search algorithm is too greedy and accepts quasi-cliques that are poor candidates.
+    Too many are invalid (8 times more candidates than valid) and must be fed back to the algorithm, increasing run-time.
+    
+    \item For $\Lambda = 1$, the search algorithm is too restrictive. Its precision is high,
+     but it spends a long time enumerating small cliques.
+
+    \item $\Lambda = 0.05$ provides the right balance, improving the result and performance.
+\end{itemize}
 
 Tables 5.6 and 5.7 contain more detailed results of this experiment.
 }
@@ -990,7 +1006,7 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
         
         \begin{itemize}
             \item The tests have been randomized and measured multiple times.
-            \item The uncertainties are reported explicitly using either 95\% confidence intervals or quartiles.
+            \item The uncertainties are explicitly reported using either 95\% confidence intervals or quartiles.
         \end{itemize}
     \end{alertblock}
 \end{frame}
