@@ -12,7 +12,7 @@
 
 \usepackage{pgfpages}
 
-%\setbeameroption{show notes on second screen}
+\setbeameroption{show notes on second screen}
 
 \addbibresource{references.bib}
 \ExecuteBibliographyOptions{isbn=false,url=false,doi=true,eprint=false}
@@ -416,7 +416,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \begin{alertblock}{Complexity}
     \smallskip
     Generally, if we have an n-IND between two datasets and traverse the lattice bottom-up,
-    the number of possible combinations we need to test is as follows:
+    the number of combinations to test is:
     
     \begin{equation*}
         \sum_{k=1}^{n}{\binom{n}{k}} = \sum_{k=1}^{n} \frac{n!}{n!(n - k)!}
@@ -425,6 +425,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \end{alertblock}
 
     \begin{block}{Top-Down Traversal}
+        \smallskip
         It works well for high-dimensional INDs but has the same complexity if they are
         low-dimensional.
     \end{block}
@@ -733,7 +734,7 @@ We can use (1), or (2), or both, which is more resilient.
 \begin{frame}{Clique Recovery: Correlated Missing / Spurious}
 \begin{figure}
     \centering
-    \includegraphics{quasi_corr_20}
+    \includegraphics[width=0.65\textwidth]{quasi_corr_20}
     \caption{
     Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.
     }
@@ -839,11 +840,8 @@ Tables 5.6 and 5.7 contain more detailed results of this experiment.
     \smallskip
     
     The output space is modeled as a grid of \emph{neurons} that \emph{responds} to a set of
-    values from the input space~\footcite{kohonen1982self}.
-
-    \smallskip
-    
-    \alert{The output model preserves the topology of the input space}: any continuous changes
+    values from the input space~\footcite{kohonen1982self}.    
+    \alert{It preserves the topology of the input space}: any continuous changes
     in the input data cause a continuous change on the neural map~\footcite{Villmann1999}.
     
     \metroset{block=fill}
