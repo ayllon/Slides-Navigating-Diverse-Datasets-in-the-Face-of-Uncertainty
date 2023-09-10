@@ -12,7 +12,7 @@
 
 \usepackage{pgfpages}
 
-\setbeameroption{show notes on second screen}
+%\setbeameroption{show notes on second screen}
 
 \addbibresource{references.bib}
 \ExecuteBibliographyOptions{isbn=false,url=false,doi=true,eprint=false}
@@ -383,7 +383,6 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \centering
     \includegraphics[width=\textwidth]{lattice.pdf}
     \caption{Search space for INDs}
-    \alert{Can we generalize IND to uncertain, multidimensional sets of attributes?}
 \end{figure}
 \note{
     Lattice!
@@ -391,7 +390,115 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
 }
 \end{frame}
 
+\begin{frame}{Traversal}
+    \begin{block}{Naive Traversal of the Search Space}
+        \smallskip
+        We can validate pairwise INDs. Then, we build possible three-wise INDs and validate them.
+        Then, we build possible four-wise INDs...
+    \end{block}
+        
+    \begin{alertblock}{Complexity}
+    \smallskip
+    Generally, if we have an n-IND between two datasets and traverse the lattice bottom-up,
+    the number of possible combinations we need to test is as follows:
+    
+    \begin{equation*}
+        \sum_{k=1}^{n}{\binom{n}{k}} = \sum_{k=1}^{n} \frac{n!}{n!(n - k)!}
+    \end{equation*}
+    
+    \end{alertblock}
+
+    \begin{block}{Top-Down Traversal}
+        It works well for high-dimensional INDs but has the same complexity if they are
+        low-dimensional.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Complexity}
+
+    It turns out that finding INDs is one of the hardest computer science
+    problems~\footcite{Blsius2017}.
+    
+    \begin{itemize}
+        \item It is \textbf{NP-hard}.
+        \item The \textbf{number of solutions} can be \textbf{exponential} in the input size.
+        \item It is \textbf{non-approximable} (NP-hard even if we accept an error margin).
+        \item However, alternating Bottom-Up and Top-Down works well for
+            typical problems.
+    \end{itemize}
+    
+    \bigskip
+
+\note{
+\begin{itemize}
+    \item BACKUP:
+
+    \item The decision problem of whether there is a clique of a
+    certain minimum size in a graph is NP-complete. Thus, finding all
+    cliques in a graph is NP-hard\footcite{koeller2002integration}.
+    
+\end{itemize}
+}
+\end{frame}
+
+%\subsection{Clique Finding}
+\begin{frame}{Clique Finding}
+    \textsc{Find2}~\footcite{koeller2003discovery} maps the problem to finding cliques on hypergraphs.
+    \begin{description}
+        \item[Hypergraph] Generalization of a graph, an edge connects multiple nodes.
+        \item[Clique] Subset of nodes on a hypergraph fully connected.
+    \end{description}
+\end{frame}
+
+\begin{frame}{Clique Finding}
+    \begin{enumerate}
+        \item Pairwise matches (1EDD) are mapped to \textbf{nodes}.
+        \item $k$-combinations of 1EDD are mapped to \textbf{$k$-edges}.
+        \item Cliques of size $n$ \emph{may} correspond to $n$-EDD.
+        \item If they do not, we \emph{break} these cliques into a set of $k+1$ edges and
+            validate them.
+    \end{enumerate}
+
+\note{
+The search space is traversed alternating between bottom-up \emph{and} top-down.
+
+Find2 Complexity: $\Theta(|V|^4 · |C|^2)$, where $|C|$ is the set of cliques.
+}
+\end{frame}
+
+\begin{frame}{Clique Finding}
+    \begin{exampleblock}{Example}
+        \begin{columns}
+        \begin{column}{.7\textwidth}
+        \begin{enumerate}
+            \item $A \subseteq M, B \subseteq N, C \subseteq O, D \subseteq P$
+            \item All 6 possible 2-EDD are true
+            \item Clique with 4 nodes $ABCD \subseteq MNOP$
+            \item If false, we break it into
+                \begin{enumerate}
+                    \item $ABC \subseteq MNO$
+                    \item $BCD \subseteq NOP$
+                    \item $ACD \subseteq MOP$
+                    \item \ldots
+                \end{enumerate}
+        \end{enumerate}
+        \end{column}
+        \begin{column}{.3\textwidth}
+            \includegraphics[width=\linewidth]{4clique}
+        \end{column}
+        \end{columns}
+    \end{exampleblock}
+
+    \pause
+    \begin{block}{}
+        \alert{Can we generalize to uncertain, multidimensional sets of attributes?}
+    \end{block}
+    
+\end{frame}
+
 \section{\PresQ}
+
 
 %\subsection{Background}
 
@@ -462,6 +569,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
         \item $d \not\models I_1$ with a probability $\alpha$ when $d \models I_2$
             (Rejecting $H_{0_1}$ \emph{does not} imply the rejection of $H_{0_2}$)
     \end{enumerate}
+    
     \end{alertblock}
 
 \note{
@@ -476,121 +584,21 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     If we have two sets of $10$ attributes that are equally distributed, the number of
     3-dimensional projections (specializations) that must be equally distributed will be $\binom{10}{3} = 120$.
     If we have a significance level of $\alpha = 0.1$, the expected number of
-    falsely rejected 3-dimensional equalities is then $12$.
+    falsely rejected 3-dimensional equalities is $12$.
     \end{exampleblock}
 }
 
 \end{frame}
 
-\begin{frame}{Bottom-Up Search}
-    \begin{block}{Naive Traversal of the Search Space}
-        \smallskip
-        We can validate pairwise EDDs. Then, we build possible three-wise EDD and validate them.
-        Then, we build possible four-wise EDD...
-    \end{block}
-        
-    \begin{alertblock}{Complexity}
-    \smallskip
-    Generally, if we have an n-EDD between two datasets and traverse the lattice bottom-up,
-    the number of possible combinations we need to test is:
-    
-    \begin{equation*}
-        \sum_{k=1}^{n}{\binom{n}{k}} = \sum_{k=1}^{n} \frac{n!}{n!(n - k)!}
-    \end{equation*}
-    
-    \end{alertblock}
-
-\note{
-Another option is a Top-Down search (optimistic): we assume $n$ 1-EDDs are derived from a single $n$-EDD.
-
-But we risk being too optimistic and needing to traverse the full search space from top to bottom.
-}
-\end{frame}
-
-\begin{frame}{Complexity}
-
-    It turns out that finding INDs/EDDs is one of the hardest computer science
-    problems~\footcite{Blsius2017}.
-    
-    \begin{itemize}
-        \item It is \textbf{NP-hard}.
-        \item The \textbf{number of solutions} can be \textbf{exponential} in the input size.
-        \item It is \textbf{non-approximable} (NP-hard even if we accept an error margin).
-    \end{itemize}
-    
-    \bigskip
-
-\note{
-\begin{itemize}
-    \item BACKUP:
-
-    \item The decision problem of whether there is a clique of a
-    certain minimum size in a graph is NP-complete. Thus, finding all
-    cliques in a graph is NP-hard\footcite{koeller2002integration}.
-    
-    \item Find2 Complexity
-    $\Theta(|V|^4 · |C|^2)$, where $|C|$ is the set of cliques.
-\end{itemize}
-}
-\end{frame}
-
-%\subsection{Clique Finding}
-\begin{frame}{Clique Finding}
-    \textsc{Find2}~\footcite{koeller2003discovery} maps the problem to finding cliques on hypergraphs.
-    \begin{description}
-        \item[Hypergraph] Generalization of a graph, an edge connects multiple nodes.
-        \item[Clique] Subset of nodes on a hypergraph fully connected.
-    \end{description}
-\end{frame}
-
-\begin{frame}{Clique Finding}
-    \begin{enumerate}
-        \item Pairwise matches (1EDD) are mapped to \textbf{nodes}.
-        \item $k$-combinations of 1EDD are mapped to \textbf{$k$-edges}.
-        \item Cliques of size $n$ \emph{may} correspond to $n$-EDD.
-        \item If they do not, we \emph{break} these cliques into a set of $k+1$ edges and
-            validate them.
-    \end{enumerate}
-\note{
-The search space is traversed alternating between bottom-up \emph{and} top-down.
-}
-\end{frame}
-
-\begin{frame}{Clique Finding}
-    \begin{exampleblock}{Example}
-        \begin{columns}
-        \begin{column}{.7\textwidth}
-        \begin{enumerate}
-            \item $A \eqdist M, B \eqdist N, C \eqdist O, D \eqdist P$
-            \item All 6 possible 2-EDD are true
-            \item Clique with 4 nodes $ABCD \eqdist MNOP$
-            \item If false, we break it into
-                \begin{enumerate}
-                    \item $ABC \eqdist MNO$
-                    \item $BCD \eqdist NOP$
-                    \item $ACD \eqdist MOP$
-                    \item \ldots
-                \end{enumerate}
-        \end{enumerate}
-        \end{column}
-        \begin{column}{.3\textwidth}
-            \includegraphics[width=\linewidth]{4clique}
-        \end{column}
-        \end{columns}
-    \end{exampleblock}
-    
-    \pause
-    
-    \begin{alertblock}{}
-    But we are using statistical tests.
+\begin{frame}{Traversal}
+    We are using statistical tests.
     
     \begin{itemize}
         \item We may falsely refuse an EDD (type I error)
         \item Or falsely accept it (type II error).
+        \item We need to generalize to cliques with missing and spurious edges.
     \end{itemize}
-    \end{alertblock}
 \end{frame}
-
 
 %\subsection{Quasi-Clique Finding}
 \begin{frame}{Quasi-Clique Finding}
