@@ -184,7 +184,7 @@ Focusing on \alert{multidimensional} distributions.
 \section{Methodology}
 
 \begin{frame}{Framework}
-\begin{block}{\alert{Researching Information Systems and Computing}~\footcite{Oates2006}}
+\begin{block}{\alert{\cite{Oates2006}}}
 
 \begin{description}
     \item[Purpose] The stated objective.
@@ -464,6 +464,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
     \textsc{Find2}~\footcite{koeller2003discovery} maps the problem to finding cliques on hypergraphs.
     \begin{description}
         \item[Hypergraph] Generalization of a graph, an edge connects multiple nodes.
+        \item[$k$-Uniform Hypergraph] Edges connect exactly $k$ nodes.
         \item[Clique] Subset of nodes on a hypergraph fully connected.
     \end{description}
 \end{frame}
@@ -752,7 +753,7 @@ Removed and added purely random. With actual data, $\Lambda$ is more robust (nex
                    & \thead{Quasicliques} & \thead{Valid} & \thead{Median size} \\
 $\Lambda = 0.00$   & 2385                 & 292       & 19        \\
 $\Lambda = 0.05$   & 107                  & 64        & 12        \\
-$\Lambda = 1.00$\footnotemark & \numprint{53 053} & \numprint{52 291} &  6         \\
+$\Lambda = 1.00$   & \numprint{53 053} & \numprint{52 291} &  6         \\
 \end{tabular}
 \caption{Consequences of the different $\Lambda$ parameterization when running over the DC2 dataset.}
 \end{table}
@@ -1036,7 +1037,7 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
 \begin{frame}{Internal Validity}
     \begin{alertblock}{Implementation Bias}
         \smallskip
-        The evaluated \PresQ and \textsc{Find} implementations share most parts of the code. The differences can only originate
+        The evaluated \PresQ and \textsc{Find2} implementations share most parts of the code. The differences can only originate
         from the algorithms and not the implementations.
         
         \smallskip
@@ -1072,9 +1073,9 @@ For the location test, fairness can be achieved by two multivariate Gaussians th
 
     \begin{block}{Generalization}
         \begin{itemize}
-            \item \alert{Partial equality-of-distribution}
+            \item \alert{Partial equality-of-distribution}.
             \item Bayesian EDD finding algorithms.
-            \item \alert{Multidimensional \emph{complementarity}}
+            \item \alert{Multidimensional \emph{complementarity}}.
         \end{itemize}
     \end{block}
 
