@@ -328,13 +328,9 @@ Focusing on \alert{multidimensional} distributions.
 
 \note{
     Based on \emph{Inclusion Dependencies} (IND): discrete data types.
-}
-\end{frame}
-    
-\begin{frame}{Insights}
+    BACKUP
     \cite{alawini2016} considers numerical attributes, but only 1D.
-    
-    \alert{\textbf{Can we generalize IND to uncertain, multidimensional sets of attributes?}}
+}
 \end{frame}
 
 \begin{frame}{Inclusion Dependency (IND)}
@@ -344,10 +340,52 @@ Focusing on \alert{multidimensional} distributions.
         R and column B of relation S, written $R.A \subseteq S.B$, asserts that each
         value of A appears in B. Similarly, for two sets of columns X
         and Y , we write $R.X \subseteq S.Y$ , or $X \subseteq Y$ , when each distinct
-        combination of values in X appears in Y~\footcite{abedjan2015}
+        combination of values in X appears in Y~\footcite{Casanova1984,DeMarchi2002,abedjan2015}
     \end{block}
 \note{
 How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
+}
+\end{frame}
+
+\begin{frame}{Definition of the Search Space}
+    \metroset{block=fill}    \begin{block}{Inference Rules}
+        \begin{itemize}
+            \item Reflexivity, Transitivity, Permutation and Projection
+        \end{itemize}
+    \end{block}
+    \begin{block}{Partial Order}
+        Let $I_1 = R[X] \subseteq S[Y]$ and $I_2 = R'[X'] \subseteq S'[Y']$.       
+        $I_1$ \textbf{specializes} $I_2$ (denoted $I_1 \prec I_2)$ iff
+        \begin{enumerate}
+            \item $R = R'$ and $S = S'$.
+            \item $X$ and $Y$ are sub-sequences of $X'$ and $Y'$, respectively.
+        \end{enumerate}
+    \end{block}
+    \begin{block}{Satisfiability}
+         Let $I_1$, $I_2$ be two candidate INDs such that $I_1 \prec I_2$.
+         \begin{enumerate}
+             \item If $d \models I_2$, then $d \models I_1$
+             \item If $d \not\models I_1$, then $d \not\models I_2$
+         \end{enumerate}
+    \end{block}
+\note{
+    Partial order, the second point, is possible thanks to the inference rules.
+    We can take a subset, shuffle (both sides), and still hold.
+
+    Satisfiability allows purging search space.
+}
+\end{frame}
+
+\begin{frame}{Search Space}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{lattice.pdf}
+    \caption{Search space for INDs}
+    \alert{Can we generalize IND to uncertain, multidimensional sets of attributes?}
+\end{figure}
+\note{
+    Lattice!
+    We can have something like this thanks to specialization (a partial order).
 }
 \end{frame}
 
@@ -383,9 +421,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
 
     For the projection, see \alert{Section 5.1, Proof 1} (page 53).
 \note{
-    This *needs* to be satisfied. The contribution is the proof.
-    Follow the Thesis schema (before PresQ section). Or EDD after these slides.
-    Make contribution clear.
+    The contribution is the proof of Projection for $\eqdist$.
 }
 \end{frame}
 
@@ -401,28 +437,24 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
         \end{enumerate}
     \end{block}
 
-    \begin{block}{Satisfiability}
+    \begin{alertblock}{Satisfiability}
     Let $I = R[X] \eqdist S[Y]$.
     A dataset $d$ \emph{satisfies} $I$ iff  a statistical test fails to reject $H_0: P(R[X]) = P(S[Y])$
     given a significance level $\alpha$.
     This is denoted as $d \models I$.
-    \end{block}
+    \end{alertblock}
 
 \note{
-    This is adapted from IND, not a contribution.
+    Partial Order is the same, replacing $\subseteq$ with $\eqdist$,
+    which we can do thanks to the previous proofs.
+
+    \alert{Satisfiability changes}. Purging upwards is not trivial anymore.
 }
 \end{frame}
 
 \begin{frame}{Search Space}
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{lattice.pdf}
-    \caption{Search space for INDs}
-\end{figure}
-\note{Lattice!}
-\end{frame}
-
-\begin{frame}{Traversal}
+    \metroset{block=fill}
+    \begin{alertblock}{Satisfiability}
     Given $I_1 \prec I_2$:
     
     \begin{enumerate}
@@ -430,6 +462,7 @@ How do we go from 1-EDD to 2-EDD to n-EDD? We need to define an order.
         \item $d \not\models I_1$ with a probability $\alpha$ when $d \models I_2$
             (Rejecting $H_{0_1}$ \emph{does not} imply the rejection of $H_{0_2}$)
     \end{enumerate}
+    \end{alertblock}
 
 \note{
     ONLY FOR BACKUP
